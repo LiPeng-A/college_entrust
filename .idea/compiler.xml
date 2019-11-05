@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ce-auth-common" />
+        <module name="ce-auth-service" />
+        <module name="ce-common" />
+        <module name="ce-entrust-interface" />
+        <module name="ce-entrust-service" />
+        <module name="ce-gateway" />
+        <module name="ce-register" />
+        <module name="ce-sms" />
+        <module name="ce-user-interface" />
+        <module name="ce-user-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ce-auth" target="1.8" />
+      <module name="ce-auth-common" target="1.8" />
+      <module name="ce-auth-service" target="1.8" />
+      <module name="ce-common" target="1.8" />
+      <module name="ce-entrust" target="1.8" />
+      <module name="ce-entrust-interface" target="1.8" />
+      <module name="ce-entrust-service" target="1.8" />
+      <module name="ce-gateway" target="1.8" />
+      <module name="ce-register" target="1.8" />
+      <module name="ce-registry" target="1.8" />
+      <module name="ce-sms" target="1.8" />
+      <module name="ce-user" target="1.8" />
+      <module name="ce-user-interface" target="1.8" />
+      <module name="ce-user-service" target="1.8" />
+      <module name="collegeEntrust" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

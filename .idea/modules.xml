@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ce-auth/ce-auth.iml" filepath="$PROJECT_DIR$/ce-auth/ce-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-auth/ce-auth-common/ce-auth-common.iml" filepath="$PROJECT_DIR$/ce-auth/ce-auth-common/ce-auth-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-auth/ce-auth-service/ce-auth-service.iml" filepath="$PROJECT_DIR$/ce-auth/ce-auth-service/ce-auth-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-common/ce-common.iml" filepath="$PROJECT_DIR$/ce-common/ce-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-entrust/ce-entrust.iml" filepath="$PROJECT_DIR$/ce-entrust/ce-entrust.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-entrust/ce-entrust-interface/ce-entrust-interface.iml" filepath="$PROJECT_DIR$/ce-entrust/ce-entrust-interface/ce-entrust-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/ce-entrust-service.iml" filepath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/ce-entrust-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-gateway/ce-gateway.iml" filepath="$PROJECT_DIR$/ce-gateway/ce-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-register/ce-register.iml" filepath="$PROJECT_DIR$/ce-register/ce-register.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-sms/ce-sms.iml" filepath="$PROJECT_DIR$/ce-sms/ce-sms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-user/ce-user.iml" filepath="$PROJECT_DIR$/ce-user/ce-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-user/ce-user-interface/ce-user-interface.iml" filepath="$PROJECT_DIR$/ce-user/ce-user-interface/ce-user-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-user/ce-user-service/ce-user-service.iml" filepath="$PROJECT_DIR$/ce-user/ce-user-service/ce-user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/collegeEntrust.iml" filepath="$PROJECT_DIR$/collegeEntrust.iml" />
+    </modules>
+  </component>
+</project>
