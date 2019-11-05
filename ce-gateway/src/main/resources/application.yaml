@@ -11,8 +11,8 @@ zuul:
   prefix: /api #添加路由前置
   routes:
     entrust-service: /entrust/**
-    user-service: /user/**
     auth-service: /auth/**
+    user-service: /user/**
   add-host-header: true #添加host头信息
   sensitive-headers:  #忽略敏感头信息
 hystrix:
@@ -22,3 +22,21 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000 #熔断超时时长：5000ms
+ribbon:
+  eureka:
+    enable: true
+  ConnectionTimeout: 1000 #ribbon连接超时时长
+  ReadTimeout: 3500     #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务重试次数
+ce:
+  jwt:
+    pubKeyPath: f:/upload/id_rsa.pub # 公钥地址
+    cookieName: CE-TOKEN
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/entrust
