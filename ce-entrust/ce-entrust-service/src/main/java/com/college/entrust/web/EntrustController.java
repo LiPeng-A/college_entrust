@@ -1,14 +1,12 @@
 package com.college.entrust.web;
 
+import com.college.common.vo.PageResult;
 import com.college.entrust.pojo.Entrust;
 import com.college.entrust.service.EntrustService;
-import com.college.entrust.vo.EntrustDetail;
 import com.college.entrust.vo.SearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class EntrustController {
@@ -21,9 +19,19 @@ public class EntrustController {
      * @return
      */
     @PostMapping("/list")
-    public ResponseEntity<EntrustDetail> queryEntrustList(@RequestBody SearchRequest searchRequest){
+    public ResponseEntity<PageResult<Entrust>> queryEntrustList(@RequestBody SearchRequest searchRequest){
 
         return ResponseEntity.ok(entrustService.queryEntrustList(searchRequest));
+    }
+
+    /**
+     * 根据id查询当前委托详情
+     * @param id
+     * @return
+     */
+    @GetMapping("detail/{id}")
+    public ResponseEntity<Entrust> queryEntrustById(@PathVariable("id")Long id){
+        return ResponseEntity.ok(entrustService.queryEntrustById(id));
     }
 
 }

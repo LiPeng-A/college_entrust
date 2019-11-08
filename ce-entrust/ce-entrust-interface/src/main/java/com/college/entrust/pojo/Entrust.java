@@ -21,6 +21,7 @@ public class Entrust {
     private Integer status; //委托状态 1.未接受 2.已接受 3.已完成 4.委托结束
     private String sub_title;
     private String detail;
+    private String image;
     private Date  create_time;
     private Long user_id;
 }

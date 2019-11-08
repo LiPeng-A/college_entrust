@@ -68,6 +68,10 @@ public class UserController {
 
     }
 
-
+    @GetMapping("userDetail/{user_id}")
+    public ResponseEntity<User> queryUserById(@PathVariable("user_id")Long user_id)
+    {
+        return ResponseEntity.ok(userService.queryUserById(user_id));
+    }
 
 }

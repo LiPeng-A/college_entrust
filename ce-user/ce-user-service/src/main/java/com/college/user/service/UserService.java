@@ -16,4 +16,7 @@ public interface UserService {
 
     //查询用户
     User login(String username, String password);
+
+    //根据id查询用户
+    User queryUserById(Long user_id);
 }

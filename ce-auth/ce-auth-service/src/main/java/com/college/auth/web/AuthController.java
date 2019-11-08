@@ -66,4 +66,22 @@ public class AuthController {
         }
     }
 
+    /**
+     * 注销登录
+     * @param request
+     * @param response
+     * @return
+     */
+    @PutMapping("/logout")
+    public ResponseEntity<Void> logout(HttpServletRequest request,
+                                       HttpServletResponse response
+                                       ){
+        //创建空的token
+        String newToken=null;
+        //将新的token'值重新写入cookie中
+        CookieUtils.newBuilder(response).httpOnly().request(request).setPath("/").build(prop.getCookieName(),newToken);
+        //返回结果
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

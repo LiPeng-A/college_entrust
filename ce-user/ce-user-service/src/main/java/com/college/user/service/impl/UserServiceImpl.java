@@ -105,4 +105,14 @@ public class UserServiceImpl implements UserService {
         }
         return user1;
     }
+
+    @Override
+    public User queryUserById(Long user_id) {
+        User user = userMapper.selectByPrimaryKey(user_id);
+        if(user==null)
+        {
+            throw new EntrustException(ExceptionEnum.USER_NOT_FOUND);
+        }
+        return user;
+    }
 }

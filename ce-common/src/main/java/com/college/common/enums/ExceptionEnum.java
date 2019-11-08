@@ -15,6 +15,7 @@ public enum  ExceptionEnum {
     INVALID_USERNAME_AND_PASSWORD(500,"无效的用户名或密码"),
     UN_AUTHORIZED(500,"未授权"),
     ENTRUST_NOT_FOUND(404,"委托信息没找到"),
+    USER_NOT_FOUND(404,"用户信息未找到"),
 
     ;
     private Integer status;
