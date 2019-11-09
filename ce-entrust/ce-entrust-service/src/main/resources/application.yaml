@@ -18,3 +18,7 @@ eureka:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #日志
+ce:
+  jwt:
+    pubKeyPath: f:/upload/id_rsa.pub # 公钥地址
+    cookieName: CE-TOKEN

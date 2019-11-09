@@ -1,5 +1,6 @@
 package com.college.entrust.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,9 @@ import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,5 +26,10 @@ public class Entrust {
     private String detail;
     private String image;
     private Date  create_time;
+    private Date update_time;
+    private Date finish_time;
     private Long user_id;
+
+    @Transient
+    private AcceptEntrust acceptEntrust;
 }

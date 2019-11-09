@@ -16,6 +16,11 @@ public enum  ExceptionEnum {
     UN_AUTHORIZED(500,"未授权"),
     ENTRUST_NOT_FOUND(404,"委托信息没找到"),
     USER_NOT_FOUND(404,"用户信息未找到"),
+    INVALID_USER_INFO(404,"无效的用户信息"),
+    ACCEPT_ENTRUST_ERROR(500,"接受委托信息失败"),
+    ACCEPT_ENTRUST_NOT_FOUND(404,"接受的委托信息查询失败"),
+    DELETE_ACCEPT_ENTRUST_ERROR(500,"放弃委托失败"),
+    ENTRUST_STATUS_UPDATE_FAILED(500,"委托状态更新失败了"),
 
     ;
     private Integer status;
