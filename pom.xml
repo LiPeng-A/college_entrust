@@ -15,6 +15,7 @@
         <module>ce-user</module>
         <module>ce-sms</module>
         <module>ce-auth</module>
+        <module>ce-upload</module>
     </modules>
     <packaging>pom</packaging>
 

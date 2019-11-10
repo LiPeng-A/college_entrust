@@ -22,3 +22,8 @@ ce:
   jwt:
     pubKeyPath: f:/upload/id_rsa.pub # 公钥地址
     cookieName: CE-TOKEN
+  worker:
+    workerId: 1
+    dataCenterId: 1
+  upload:
+    url: F:\college-portal\uploadImage

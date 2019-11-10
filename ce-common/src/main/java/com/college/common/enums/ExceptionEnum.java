@@ -21,6 +21,11 @@ public enum  ExceptionEnum {
     ACCEPT_ENTRUST_NOT_FOUND(404,"接受的委托信息查询失败"),
     DELETE_ACCEPT_ENTRUST_ERROR(500,"放弃委托失败"),
     ENTRUST_STATUS_UPDATE_FAILED(500,"委托状态更新失败了"),
+    INVALID_FILE_TYPE(500,"无效的文件类型"),
+    UPLOAD_ERROR(500,"上传文件失败"),
+    ENTRUST_INSERT_ERROR(500,"委托添加失败"),
+    UPDATE_ENTRUST_ERROR(500,"委托修改失败"),
+    DELETE_ENTRUST_ERROR(500,"委托删除失败"),
 
     ;
     private Integer status;

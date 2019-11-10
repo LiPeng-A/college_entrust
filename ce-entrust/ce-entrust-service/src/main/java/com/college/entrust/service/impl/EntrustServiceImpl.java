@@ -3,7 +3,9 @@ package com.college.entrust.service.impl;
 import com.college.auth.pojo.UserInfo;
 import com.college.common.Exception.EntrustException;
 import com.college.common.enums.ExceptionEnum;
+import com.college.common.utils.IdWorker;
 import com.college.common.vo.PageResult;
+import com.college.entrust.config.ImageProperties;
 import com.college.entrust.interceptor.UserInterceptor;
 import com.college.entrust.mapper.AcceptEntrustMapper;
 import com.college.entrust.mapper.EntrustMapper;
@@ -16,18 +18,26 @@ import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@EnableConfigurationProperties(ImageProperties.class)
 public class EntrustServiceImpl implements EntrustService {
 
     @Autowired
@@ -36,6 +46,13 @@ public class EntrustServiceImpl implements EntrustService {
     @Autowired
     private AcceptEntrustMapper acceptEntrustMapper;
 
+    @Autowired
+    private IdWorker idWorker;
+
+    @Autowired
+    private ImageProperties imageProperties;
+
+    private static final List<String> ALLOW_TYPE= Arrays.asList("image/jpeg","image/png","image/bmp");
 
 
     @Override
@@ -202,6 +219,183 @@ public class EntrustServiceImpl implements EntrustService {
         {
             log.error("[委托服务] 更新委托状态失败 acceptEntrust");
             throw new EntrustException(ExceptionEnum.ENTRUST_STATUS_UPDATE_FAILED);
+        }
+    }
+
+    @Override
+    public List<Entrust> findEntrustByUser() {
+        //获取用户信息
+        UserInfo user = UserInterceptor.getUser();
+        //根据用户id查询已发布的委托
+        Entrust entrust = new Entrust();
+        entrust.setUser_id(user.getId());
+        List<Entrust> entrusts = entrustMapper.select(entrust);
+        if(CollectionUtils.isEmpty(entrusts)){
+            log.error("[委托微服务] 根据用户查找委托信息失败 用户名：{}",user.getUsername());
+            throw new EntrustException(ExceptionEnum.ENTRUST_NOT_FOUND);
+        }
+        //查询委托的状态表
+        AcceptEntrust acceptEntrust = new AcceptEntrust();
+        acceptEntrust.setRelease_uid(user.getId());
+        List<AcceptEntrust> acceptEntrusts = acceptEntrustMapper.select(acceptEntrust);
+        if(CollectionUtils.isEmpty(acceptEntrusts))
+        {
+            return entrusts;
+        }
+        //遍历集合组装数据
+        for (Entrust entrust1 : entrusts) {
+            for (AcceptEntrust acceptEntrust1 : acceptEntrusts) {
+                if(acceptEntrust1.getEntrust_id()==entrust1.getId())
+                {
+                    entrust1.setAcceptEntrust(acceptEntrust1);
+                }
+            }
+        }
+
+        return entrusts;
+    }
+
+    @Transactional
+    @Override
+    public void createEntrust(MultipartFile file,MultipartFile file1,MultipartFile file2, String title, String  sub_title, String  detail) {
+        //1获取当前登录用户的信息
+        UserInfo user = UserInterceptor.getUser();
+        //2拼装数据
+        Entrust entrust=new Entrust();
+        entrust.setCreate_time(new Date());
+        entrust.setUser_id(user.getId());
+        entrust.setTitle(title);
+        entrust.setSub_title(sub_title);
+        entrust.setDetail(detail);
+        try {
+            //3上传图片
+            //3.1判断文件类型
+            if(!ALLOW_TYPE.contains(file.getContentType()))
+            {
+                throw new EntrustException(ExceptionEnum.INVALID_FILE_TYPE);
+            }
+            //3.2校验文件内容是否为图片
+            BufferedImage image = ImageIO.read(file.getInputStream());
+            if(image==null)
+            {
+                throw new EntrustException(ExceptionEnum.INVALID_FILE_TYPE);
+            }
+            //上传文件到本地
+            File dest=new File(imageProperties.getUrl(),file.getOriginalFilename());
+            file.transferTo(dest);
+            File dest1=new File(imageProperties.getUrl(),file1.getOriginalFilename());
+            file1.transferTo(dest1);
+            File dest2=new File(imageProperties.getUrl(),file2.getOriginalFilename());
+            file2.transferTo(dest2);
+            //将文件路径保存到数据库
+            entrust.setImage(dest.getPath()+","+dest1.getPath()+","+dest2.getPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //4委托编号(利用雪花算法 来获取id)
+        long entrust_id = idWorker.nextId();
+        entrust.setId(entrust_id);
+        //5将信息保存到数据库
+        int insert = entrustMapper.insert(entrust);
+        if(insert!=1)
+        {
+            throw new EntrustException(ExceptionEnum.ENTRUST_INSERT_ERROR);
+        }
+
+    }
+
+    @Override
+    public Entrust echoEntrust(Long id) {
+        //获取当前登录的用户信息
+        UserInfo user = UserInterceptor.getUser();
+        //回显
+        Entrust entrust = new Entrust();
+        entrust.setId(id);
+        entrust.setUser_id(user.getId());
+        Entrust entrust1 = entrustMapper.selectOne(entrust);
+        if(entrust1==null)
+        {
+            log.error("[委托微服务]，查询要修改的委托失败，用户为，{}，委托单号为，{}",user.getUsername(),id);
+            throw new EntrustException(ExceptionEnum.ENTRUST_NOT_FOUND);
+        }
+        return entrust1;
+    }
+
+    @Transactional
+    @Override
+    public void updateEntrust(MultipartFile file, MultipartFile file1, MultipartFile file2, String title, String sub_title, String detail, Long id) {
+        //查询出原来的委托的图片路径
+        Entrust entrust1 = entrustMapper.selectByPrimaryKey(id);
+        deleteImage(entrust1);
+        //拼装属性
+        Entrust entrust = new Entrust();
+        entrust.setId(id);
+        entrust.setTitle(title);
+        entrust.setSub_title(sub_title);
+        entrust.setDetail(detail);
+        try {
+            //3上传图片
+            //3.1判断文件类型
+            if (!ALLOW_TYPE.contains(file.getContentType())) {
+                throw new EntrustException(ExceptionEnum.INVALID_FILE_TYPE);
+            }
+            //3.2校验文件内容是否为图片
+            BufferedImage image = null;
+            image = ImageIO.read(file.getInputStream());
+            if (image == null) {
+                throw new EntrustException(ExceptionEnum.INVALID_FILE_TYPE);
+            }
+            //上传文件到本地
+            File dest = new File(imageProperties.getUrl(), file.getOriginalFilename());
+            file.transferTo(dest);
+            File dest1 = new File(imageProperties.getUrl(), file1.getOriginalFilename());
+            file1.transferTo(dest1);
+            File dest2 = new File(imageProperties.getUrl(), file2.getOriginalFilename());
+            file2.transferTo(dest2);
+            //将文件路径保存到数据库
+            entrust.setImage(dest.getPath() + "," + dest1.getPath() + "," + dest2.getPath());
+            int i = entrustMapper.updateByPrimaryKeySelective(entrust);
+            if(i!=1)
+            {
+                log.error("[委托微服务]，修改委托失败，委托单号为，{}",id);
+                throw new EntrustException(ExceptionEnum.UPDATE_ENTRUST_ERROR);
+            }
+        }catch (Exception e)
+        {
+            log.error("[委托微服务]，修改委托失败，委托单号为，{}",id);
+            throw new EntrustException(ExceptionEnum.UPDATE_ENTRUST_ERROR);
+        }
+    }
+
+    @Transactional
+    @Override
+    public void deleteEntrust(Long id) {
+        //先查出该委托 获取图片路径
+        Entrust entrust = entrustMapper.selectByPrimaryKey(id);
+        deleteImage(entrust);
+        //删除委托信息
+        int i = entrustMapper.deleteByPrimaryKey(id);
+        if(i!=1)
+        {
+            throw new EntrustException(ExceptionEnum.DELETE_ENTRUST_ERROR);
+        }
+    }
+
+    /**
+     * 删除图片
+     * @param entrust
+     */
+    private void deleteImage(Entrust entrust) {
+        String[] split = entrust.getImage().split(",");
+        for (String image : split) {
+            File img=new File(image);
+            if(img.exists()&&img.isFile())
+            {
+                if(img.delete())
+                {
+                    log.info("文件删除成功，文件全路径：{}",image);
+                }
+            }
         }
     }
 }

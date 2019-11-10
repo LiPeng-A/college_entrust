@@ -30,6 +30,7 @@
       <module name="ce-register" target="1.8" />
       <module name="ce-registry" target="1.8" />
       <module name="ce-sms" target="1.8" />
+      <module name="ce-upload" target="1.8" />
       <module name="ce-user" target="1.8" />
       <module name="ce-user-interface" target="1.8" />
       <module name="ce-user-service" target="1.8" />

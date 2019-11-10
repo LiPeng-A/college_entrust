@@ -1,9 +1,9 @@
 package com.college.entrust.service;
 
 import com.college.common.vo.PageResult;
-import com.college.entrust.pojo.AcceptEntrust;
 import com.college.entrust.pojo.Entrust;
 import com.college.entrust.vo.SearchRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -29,4 +29,19 @@ public interface EntrustService {
 
     //确定完成委托
     void confirmEntrust(Long id);
+
+    //查询用户已发布的委托
+    List<Entrust> findEntrustByUser();
+
+    //添加委托
+    void createEntrust(MultipartFile file,MultipartFile file1,MultipartFile file2, String title,String  sub_title,String  detail);
+
+    //回显委托
+    Entrust echoEntrust(Long id);
+
+    //修改委托
+    void updateEntrust(MultipartFile file, MultipartFile file1, MultipartFile file2, String title, String sub_title, String detail, Long id);
+
+    //删除委托
+    void deleteEntrust(Long id);
 }
