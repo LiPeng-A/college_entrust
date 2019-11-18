@@ -1,8 +1,10 @@
 package com.college.user.service;
 
 import com.college.user.pojo.User;
+import com.college.user.vo.PasswordRequest;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 public interface UserService {
     //校验数据
@@ -19,4 +21,19 @@ public interface UserService {
 
     //根据id查询用户
     User queryUserById(Long user_id);
+
+    //修改用户信息
+    void updateUser(User user);
+
+    //修改密码
+    void alertPassword(PasswordRequest request);
+
+    //人脸识别注册
+    Map<String ,Object> faceRegister(String str, String fid);
+
+    void delFace(Long id);
+
+    Map<String,Object> updateFace(String str, Long id);
+
+    String faceLogin(String str);
 }

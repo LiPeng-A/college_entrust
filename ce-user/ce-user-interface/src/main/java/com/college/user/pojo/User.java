@@ -31,4 +31,6 @@ public class User {
 
     private Date created;// 创建时间
 
+    private Integer is_face;// 是否已经录入人脸  1 已录入  0 未录入
+
 }

@@ -1,0 +1,12 @@
+com\college\entrust\config\ImageProperties.class
+com\college\CeEntrustApplication.class
+com\college\entrust\config\JwtProperties.class
+com\college\entrust\web\EntrustController.class
+com\college\entrust\interceptor\UserInterceptor.class
+com\college\entrust\config\IdWorkerConfig.class
+com\college\entrust\config\MvcConfig.class
+com\college\entrust\service\EntrustService.class
+com\college\entrust\mapper\EntrustMapper.class
+com\college\entrust\config\IdWorkerProperties.class
+com\college\entrust\mapper\AcceptEntrustMapper.class
+com\college\entrust\service\impl\EntrustServiceImpl.class

@@ -26,6 +26,17 @@ public enum  ExceptionEnum {
     ENTRUST_INSERT_ERROR(500,"委托添加失败"),
     UPDATE_ENTRUST_ERROR(500,"委托修改失败"),
     DELETE_ENTRUST_ERROR(500,"委托删除失败"),
+    SEND_MESSAGE_ERROR(500,"发送通知失败"),
+    MESSAGE_NOT_FOUND(404,"通知信息没找到"),
+    UPDATE_MESSAGE_ERROR(500,"更新通知信息状态失败"),
+    DELETE_MESSAGE_ERROR(500,"删除通知信息失败"),
+    UPDATE_USER_ERROR(500,"更新用户信息失败"),
+    PASSWORD_INVALID(500,"无效的原密码"),
+    CONFIRM_PASSWORD_ERROR(500,"两次密码不一致"),
+    FACE_REGISTER_ERROR(500,"两次密码不一致"),
+    FACE_INVALID(500,"无效的人脸信息"),
+    DELETE_FACE_ERROR(500,"删除人脸信息失败"),
+
 
     ;
     private Integer status;

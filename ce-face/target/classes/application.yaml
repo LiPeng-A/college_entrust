@@ -1,0 +1,24 @@
+server:
+  port: 8026
+  max-http-header-size: 10000000
+spring:
+  application:
+    name: face-service
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/college?useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+Ce:
+  face:
+    app_id: 17771248
+    api_key: dLrZ70ZPubWzT4rLB8nDEw1M
+    secret_key: KXGGMD8Dm7da3W0oYYXEgfesPS8gKu7T
+    group: group

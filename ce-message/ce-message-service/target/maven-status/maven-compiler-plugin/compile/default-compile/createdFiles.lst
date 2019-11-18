@@ -1,0 +1,7 @@
+com\college\message\mq\MessageListener.class
+com\college\CeMsgApplication.class
+com\college\message\mapper\MessageMapper.class
+com\college\message\service\impl\MessageServiceImpl.class
+com\college\message\service\MessageService.class
+com\college\message\client\EntrustClient.class
+com\college\message\web\MessageController.class

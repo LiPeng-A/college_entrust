@@ -2,7 +2,10 @@ package com.college.entrust.service.impl;
 
 import com.college.auth.pojo.UserInfo;
 import com.college.common.Exception.EntrustException;
+import com.college.common.enums.AcceptStatusEnum;
 import com.college.common.enums.ExceptionEnum;
+import com.college.common.enums.ReleaseStatusEnum;
+import com.college.common.enums.StatusEnum;
 import com.college.common.utils.IdWorker;
 import com.college.common.vo.PageResult;
 import com.college.entrust.config.ImageProperties;
@@ -17,6 +20,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.omg.PortableInterceptor.ObjectReferenceFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
@@ -29,10 +34,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -52,9 +54,15 @@ public class EntrustServiceImpl implements EntrustService {
     @Autowired
     private ImageProperties imageProperties;
 
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
     private static final List<String> ALLOW_TYPE= Arrays.asList("image/jpeg","image/png","image/bmp");
 
 
+
+
+    //分页查询所有委托
     @Override
     public PageResult<Entrust> queryEntrustList(SearchRequest request) {
         //分页
@@ -81,6 +89,7 @@ public class EntrustServiceImpl implements EntrustService {
         return new PageResult<>(info.getTotal(),totalPage,info.getList());
     }
 
+    //根据id查询委托
     @Override
     public Entrust queryEntrustById(Long id) {
         Entrust entrust = entrustMapper.selectByPrimaryKey(id);
@@ -92,23 +101,24 @@ public class EntrustServiceImpl implements EntrustService {
         return entrust;
     }
 
+    //接受委托
     @Transactional
     @Override
     public void acceptEntrust(Long id) {
         //1.将原先的委托的状态置为已接受
         Entrust entrust=new Entrust();
-        entrust.setStatus(2);  //将委托状态置为已接受
+        entrust.setStatus(StatusEnum.ACCEPT.getValue());  //将委托状态置为已接受
         entrust.setId(id);
         entrustMapper.updateByPrimaryKeySelective(entrust);
         //2.将当前的用户信息与委托id存入接受委托的表中，将状态置为接受
         Entrust en = entrustMapper.selectOne(entrust);
         AcceptEntrust acceptEntrust = new AcceptEntrust();
         //拼装数据
-        acceptEntrust.setAccept_status(1); //接受状态
+        acceptEntrust.setAccept_status(AcceptStatusEnum.CONFIRM.getValue()); //接受状态
         acceptEntrust.setAccept_time(new Date()); //接受时间
         acceptEntrust.setEntrust_id(en.getId()); //委托id
         acceptEntrust.setRelease_uid(en.getUser_id()); //发布人id
-        acceptEntrust.setRelease_status(0); //对方状态为 未确认
+        acceptEntrust.setRelease_status(ReleaseStatusEnum.NOT_CONFIRM.getValue()); //对方状态为 未确认
         //获取登录的用户的信息
         UserInfo user = UserInterceptor.getUser();
         acceptEntrust.setAccept_uid(user.getId()); //接受人id
@@ -119,8 +129,15 @@ public class EntrustServiceImpl implements EntrustService {
             log.error("[委托服务]  接受委托失败，失败用户：{}",user.getUsername());
             throw new EntrustException(ExceptionEnum.ACCEPT_ENTRUST_ERROR);
         }
+        Map<String,Object> paramMap=new HashMap<>();
+        paramMap.put("status",1); //委托状态
+        paramMap.put("user_id",en.getUser_id()); //发布人id
+        paramMap.put("entrust_id",en.getId());
+        //发送amqp消息通知
+        amqpTemplate.convertAndSend("ce.entrust.status.exchange","entrust.status.message",paramMap);
     }
 
+    //查询已接受的委托
     @Override
     public List<Entrust> queryAcceptEntrust() {
 
@@ -144,7 +161,7 @@ public class EntrustServiceImpl implements EntrustService {
         List<Entrust> entrusts1 = new ArrayList<>();
         for (Entrust entrust : entrusts) {
             for (AcceptEntrust acceptEntrust1 : acceptEntrustList) {
-                if (acceptEntrust1.getEntrust_id() == entrust.getId()) {
+                if (entrust.getId().equals(acceptEntrust1.getEntrust_id())) {
                     entrust.setAcceptEntrust(acceptEntrust1);
                     entrusts1.add(entrust);
                 }
@@ -154,9 +171,11 @@ public class EntrustServiceImpl implements EntrustService {
         return entrusts1;
     }
 
+    //放弃委托
     @Transactional
     @Override
     public void deleteAcceptEntrust(Long id) {
+        UserInfo user = UserInterceptor.getUser();
         //删除委托
         AcceptEntrust acceptEntrust=new AcceptEntrust();
         acceptEntrust.setEntrust_id(id);
@@ -168,15 +187,24 @@ public class EntrustServiceImpl implements EntrustService {
         //改变委托状态
         Entrust entrust = new Entrust();
         entrust.setId(id);
-        entrust.setStatus(1);
+        entrust.setStatus(StatusEnum.DID_NOT_RECEIVE.getValue());
         int i1 = entrustMapper.updateByPrimaryKeySelective(entrust);
         if(i1!=1)
         {
             throw new EntrustException(ExceptionEnum.ENTRUST_STATUS_UPDATE_FAILED);
         }
+        Entrust entrust1 = entrustMapper.selectByPrimaryKey(id);
+        //拼装要发送的信息
+        Map<String,Object> paramMap=new HashMap<>();
+        paramMap.put("status",-1); //委托状态
+        paramMap.put("user_id",entrust1.getUser_id()); //发布人id
+        paramMap.put("entrust_id",entrust.getId());
+        //发送amqp消息通知
+        amqpTemplate.convertAndSend("ce.entrust.status.exchange","entrust.status.message",paramMap);
     }
 
 
+    //根据id查询委托详情
     @Override
     public Entrust queryEntrustDetailById(Long id) {
 
@@ -190,38 +218,38 @@ public class EntrustServiceImpl implements EntrustService {
         AcceptEntrust acceptEntrust = acceptEntrustMapper.selectOne(acceptEntrust2);
         if(acceptEntrust==null)
         {
-            throw new EntrustException(ExceptionEnum.ACCEPT_ENTRUST_NOT_FOUND);
+           return entrust;
         }
         entrust.setAcceptEntrust(acceptEntrust);
         return entrust;
     }
 
+
+    //接受委托的人确认完成委托
     @Transactional
     @Override
     public void confirmEntrust(Long id) {
-        //改变委托的状态
-        Entrust entrust = new Entrust();
-        entrust.setStatus(3);
-        entrust.setId(id);
-        entrust.setUpdate_time(new Date());
-        int i = entrustMapper.updateByPrimaryKeySelective(entrust);
-        if(i!=1)
-        {
-            log.error("[委托服务] 更新委托状态失败 entrust");
-            throw new EntrustException(ExceptionEnum.ENTRUST_STATUS_UPDATE_FAILED);
-        }
         //改变接受的委托表中的状态
         AcceptEntrust acceptEntrust = new AcceptEntrust();
         acceptEntrust.setEntrust_id(id);
-        acceptEntrust.setAccept_status(2); //改变接受人状态为 已完成
+        acceptEntrust.setAccept_status(AcceptStatusEnum.FINISH.getValue()); //改变接受人状态为 已完成
         int i1 = acceptEntrustMapper.updateByPrimaryKeySelective(acceptEntrust);
         if(i1!=1)
         {
             log.error("[委托服务] 更新委托状态失败 acceptEntrust");
             throw new EntrustException(ExceptionEnum.ENTRUST_STATUS_UPDATE_FAILED);
         }
+        Entrust entrust = entrustMapper.selectByPrimaryKey(id);
+        //拼装要发送的信息
+        Map<String,Object> paramMap=new HashMap<>();
+        paramMap.put("status",3); //委托状态
+        paramMap.put("user_id",entrust.getUser_id()); //发布人id
+        paramMap.put("entrust_id",entrust.getId());
+        //发送amqp消息通知
+        amqpTemplate.convertAndSend("ce.entrust.status.exchange","entrust.status.message",paramMap);
     }
 
+    //根据用户查询用户已发布委托
     @Override
     public List<Entrust> findEntrustByUser() {
         //获取用户信息
@@ -245,7 +273,7 @@ public class EntrustServiceImpl implements EntrustService {
         //遍历集合组装数据
         for (Entrust entrust1 : entrusts) {
             for (AcceptEntrust acceptEntrust1 : acceptEntrusts) {
-                if(acceptEntrust1.getEntrust_id()==entrust1.getId())
+                if(acceptEntrust1.getEntrust_id().equals(entrust1.getId()))
                 {
                     entrust1.setAcceptEntrust(acceptEntrust1);
                 }
@@ -255,6 +283,7 @@ public class EntrustServiceImpl implements EntrustService {
         return entrusts;
     }
 
+    //创建委托
     @Transactional
     @Override
     public void createEntrust(MultipartFile file,MultipartFile file1,MultipartFile file2, String title, String  sub_title, String  detail) {
@@ -267,6 +296,7 @@ public class EntrustServiceImpl implements EntrustService {
         entrust.setTitle(title);
         entrust.setSub_title(sub_title);
         entrust.setDetail(detail);
+        entrust.setStatus(StatusEnum.DID_NOT_RECEIVE.getValue()); //委托状态
         try {
             //3上传图片
             //3.1判断文件类型
@@ -304,6 +334,7 @@ public class EntrustServiceImpl implements EntrustService {
 
     }
 
+    //修改委托 回显数据
     @Override
     public Entrust echoEntrust(Long id) {
         //获取当前登录的用户信息
@@ -321,6 +352,7 @@ public class EntrustServiceImpl implements EntrustService {
         return entrust1;
     }
 
+    //修改委托
     @Transactional
     @Override
     public void updateEntrust(MultipartFile file, MultipartFile file1, MultipartFile file2, String title, String sub_title, String detail, Long id) {
@@ -367,6 +399,7 @@ public class EntrustServiceImpl implements EntrustService {
         }
     }
 
+    //删除委托
     @Transactional
     @Override
     public void deleteEntrust(Long id) {
@@ -379,6 +412,72 @@ public class EntrustServiceImpl implements EntrustService {
         {
             throw new EntrustException(ExceptionEnum.DELETE_ENTRUST_ERROR);
         }
+    }
+
+    //修改发布人的委托状态 为已确定
+    @Transactional
+    @Override
+    public void releaseConfirm(Long id) {
+
+        //修改发布人委托状态为1 （已确定）
+        AcceptEntrust acceptEntrust=new AcceptEntrust();
+        acceptEntrust.setEntrust_id(id);
+        acceptEntrust.setRelease_status(AcceptStatusEnum.CONFIRM.getValue());
+        int i = acceptEntrustMapper.updateByPrimaryKeySelective(acceptEntrust);
+        if(i!=1)
+        {
+            throw new EntrustException(ExceptionEnum.UPDATE_ENTRUST_ERROR);
+        }
+        AcceptEntrust acceptEntrust1 = acceptEntrustMapper.selectOne(acceptEntrust);
+        //修改委托状态为2 双方已确定
+        Entrust entrust=new Entrust();
+        entrust.setStatus(StatusEnum.CONFIRM.getValue());
+        entrust.setId(id);
+        int i1 = entrustMapper.updateByPrimaryKeySelective(entrust);
+        if(i1!=1)
+        {
+            throw new EntrustException(ExceptionEnum.UPDATE_ENTRUST_ERROR);
+        }
+        //拼装要发送的信息
+        Map<String,Object> paramMap=new HashMap<>();
+        paramMap.put("status",2); //委托状态
+        paramMap.put("user_id",acceptEntrust1.getAccept_uid()); //接受人id
+        paramMap.put("entrust_id",id);
+        //发送amqp消息通知
+        amqpTemplate.convertAndSend("ce.entrust.status.exchange","entrust.status.message",paramMap);
+    }
+
+    //修改发布人的状态为已完成
+    @Override
+    public void releaseFinish(Long id) {
+        //修改发布人委托状态为2 （已完成）
+        AcceptEntrust acceptEntrust=new AcceptEntrust();
+        acceptEntrust.setEntrust_id(id);
+        acceptEntrust.setRelease_status(AcceptStatusEnum.FINISH.getValue());
+        int i = acceptEntrustMapper.updateByPrimaryKeySelective(acceptEntrust);
+        if(i!=1)
+        {
+            throw new EntrustException(ExceptionEnum.UPDATE_ENTRUST_ERROR);
+        }
+        //修改委托状态为2 双方已确定
+        Entrust entrust=new Entrust();
+        entrust.setStatus(StatusEnum.FINISH.getValue());
+        entrust.setId(id);
+        int i1 = entrustMapper.updateByPrimaryKeySelective(entrust);
+        if(i1!=1)
+        {
+            throw new EntrustException(ExceptionEnum.UPDATE_ENTRUST_ERROR);
+        }
+
+        AcceptEntrust acceptEntrust1 = acceptEntrustMapper.selectOne(acceptEntrust);
+        Entrust entrust1 = entrustMapper.selectByPrimaryKey(id);
+        //拼装要发送的信息
+        Map<String,Object> paramMap=new HashMap<>();
+        paramMap.put("status",4); //委托状态
+        paramMap.put("user_id",acceptEntrust1.getAccept_uid()); //接受人id
+        paramMap.put("entrust_id",entrust1.getId());
+        //发送amqp消息通知
+        amqpTemplate.convertAndSend("ce.entrust.status.exchange","entrust.status.message",paramMap);
     }
 
     /**

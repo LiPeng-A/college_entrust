@@ -1,0 +1,5 @@
+com\college\gateway\config\JwtProperties.class
+com\college\CeGateway.class
+com\college\gateway\config\FilterProperties.class
+com\college\gateway\config\GlobalCorsConfig.class
+com\college\gateway\filter\AuthFilter.class

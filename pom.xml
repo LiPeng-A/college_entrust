@@ -15,7 +15,8 @@
         <module>ce-user</module>
         <module>ce-sms</module>
         <module>ce-auth</module>
-        <module>ce-upload</module>
+        <module>ce-message</module>
+        <module>ce-face</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -82,15 +83,4 @@
             <version>1.16.22</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>

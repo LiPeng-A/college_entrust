@@ -44,4 +44,10 @@ public interface EntrustService {
 
     //删除委托
     void deleteEntrust(Long id);
+
+    //确认该委托被接收
+    void releaseConfirm(Long id);
+
+    //确认对方完成任务
+    void releaseFinish(Long id);
 }

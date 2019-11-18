@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.college.parent</groupId>
+    <groupId>com.college.service</groupId>
     <artifactId>ce-sms</artifactId>
 
     <dependencies>
@@ -48,4 +48,13 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

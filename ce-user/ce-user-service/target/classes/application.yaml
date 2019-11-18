@@ -27,3 +27,11 @@ eureka:
     lease-expiration-duration-in-seconds: 15
 mybatis:
   type-aliases-package: com.college.user.pojo
+ce:
+  salt: 116dfadfa
+  jwt:
+    secret: college@Login(Auth}*^31)xinxiang% # 登录校验的密钥
+    pubKeyPath: f:/upload/id_rsa.pub # 公钥地址
+    priKeyPath: f:/upload/id_rsa.pri # 私钥地址
+    expire: 30 # 过期时间,单位分钟
+    cookieName: CE-TOKEN

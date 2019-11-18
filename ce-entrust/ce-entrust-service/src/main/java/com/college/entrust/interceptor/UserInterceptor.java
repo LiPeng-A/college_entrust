@@ -37,7 +37,10 @@ public class UserInterceptor implements HandlerInterceptor {
             //放行
             return  true;
         } catch (Exception e) {
-            log.error("[委托服务] 拦截器，解析用户信息失败");
+            String requestURI = request.getRequestURI();
+            log.error("[委托服务] 拦截器，解析用户信息失败 {}",requestURI);
+
+
             return false;
         }
     }

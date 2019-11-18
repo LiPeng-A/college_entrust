@@ -1,0 +1,3 @@
+com\college\user\vo\PasswordRequest.class
+com\college\user\pojo\User.class
+com\college\user\api\UserApi.class

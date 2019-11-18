@@ -11,7 +11,10 @@
         <module name="ce-common" />
         <module name="ce-entrust-interface" />
         <module name="ce-entrust-service" />
+        <module name="ce-face" />
         <module name="ce-gateway" />
+        <module name="ce-message-interface" />
+        <module name="ce-message-service" />
         <module name="ce-register" />
         <module name="ce-sms" />
         <module name="ce-user-interface" />
@@ -26,7 +29,11 @@
       <module name="ce-entrust" target="1.8" />
       <module name="ce-entrust-interface" target="1.8" />
       <module name="ce-entrust-service" target="1.8" />
+      <module name="ce-face" target="1.8" />
       <module name="ce-gateway" target="1.8" />
+      <module name="ce-message" target="1.8" />
+      <module name="ce-message-interface" target="1.8" />
+      <module name="ce-message-service" target="1.8" />
       <module name="ce-register" target="1.8" />
       <module name="ce-registry" target="1.8" />
       <module name="ce-sms" target="1.8" />

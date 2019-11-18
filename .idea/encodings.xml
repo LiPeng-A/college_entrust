@@ -9,10 +9,13 @@
     <file url="file://$PROJECT_DIR$/ce-entrust" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-entrust/ce-entrust-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ce-face" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ce-message" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ce-message/ce-message-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ce-message/ce-message-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-register" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-sms" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ce-upload" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-user" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-user/ce-user-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ce-user/ce-user-service" charset="UTF-8" />

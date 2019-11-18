@@ -1,0 +1,9 @@
+com\college\CeUserApplication.class
+com\college\user\service\impl\UserServiceImpl.class
+com\college\user\web\UserController.class
+com\college\user\client\FaceClient.class
+com\college\user\service\UserService.class
+com\college\user\config\SaltProperties.class
+com\college\user\config\JwtProperties.class
+com\college\user\utils\CodecUtils.class
+com\college\user\mapper\UserMapper.class

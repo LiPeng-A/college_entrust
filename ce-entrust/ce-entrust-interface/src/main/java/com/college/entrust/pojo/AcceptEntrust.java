@@ -1,5 +1,7 @@
 package com.college.entrust.pojo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;
 
@@ -12,6 +14,7 @@ import java.util.Date;
 public class AcceptEntrust {
     @Id
     @KeySql(useGeneratedKeys = true)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long entrust_id; //委托编号
     private Date accept_time; // 接受委托时间
     private Long accept_uid; //接受人id

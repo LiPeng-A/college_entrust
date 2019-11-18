@@ -1,11 +1,12 @@
 package com.college.user.utils;
  
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 public class CodecUtils {
+
+    public static String passwordBcryptEncode(String salt,String password){ //给密码中加盐
  
-    public static String passwordBcryptEncode(String username,String password){
- 
-        return new BCryptPasswordEncoder().encode(username + password);
+        return new BCryptPasswordEncoder().encode(salt + password);
     }
  
     public static Boolean passwordBcryptDecode(String rawPassword,String encodePassword){

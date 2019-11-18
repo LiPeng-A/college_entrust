@@ -16,6 +16,7 @@ public class MvcConfig implements WebMvcConfigurer {
     //添加拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new UserInterceptor(properties)).addPathPatterns("/**");
+        registry.addInterceptor(new UserInterceptor(properties)).addPathPatterns("/**")
+                .excludePathPatterns("/accept-detail/**");
     }
 }

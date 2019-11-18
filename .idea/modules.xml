@@ -9,7 +9,11 @@
       <module fileurl="file://$PROJECT_DIR$/ce-entrust/ce-entrust.iml" filepath="$PROJECT_DIR$/ce-entrust/ce-entrust.iml" />
       <module fileurl="file://$PROJECT_DIR$/ce-entrust/ce-entrust-interface/ce-entrust-interface.iml" filepath="$PROJECT_DIR$/ce-entrust/ce-entrust-interface/ce-entrust-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/ce-entrust-service.iml" filepath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/ce-entrust-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-face/ce-face.iml" filepath="$PROJECT_DIR$/ce-face/ce-face.iml" />
       <module fileurl="file://$PROJECT_DIR$/ce-gateway/ce-gateway.iml" filepath="$PROJECT_DIR$/ce-gateway/ce-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-message/ce-message.iml" filepath="$PROJECT_DIR$/ce-message/ce-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-message/ce-message-interface/ce-message-interface.iml" filepath="$PROJECT_DIR$/ce-message/ce-message-interface/ce-message-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ce-message/ce-message-service/ce-message-service.iml" filepath="$PROJECT_DIR$/ce-message/ce-message-service/ce-message-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ce-register/ce-register.iml" filepath="$PROJECT_DIR$/ce-register/ce-register.iml" />
       <module fileurl="file://$PROJECT_DIR$/ce-sms/ce-sms.iml" filepath="$PROJECT_DIR$/ce-sms/ce-sms.iml" />
       <module fileurl="file://$PROJECT_DIR$/ce-user/ce-user.iml" filepath="$PROJECT_DIR$/ce-user/ce-user.iml" />

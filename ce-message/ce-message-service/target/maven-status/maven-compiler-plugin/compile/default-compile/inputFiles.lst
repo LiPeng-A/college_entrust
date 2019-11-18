@@ -1,0 +1,7 @@
+F:\Test_Maven\collegeEntrust\ce-message\ce-message-service\src\main\java\com\college\message\service\MessageService.java
+F:\Test_Maven\collegeEntrust\ce-message\ce-message-service\src\main\java\com\college\message\web\MessageController.java
+F:\Test_Maven\collegeEntrust\ce-message\ce-message-service\src\main\java\com\college\message\mq\MessageListener.java
+F:\Test_Maven\collegeEntrust\ce-message\ce-message-service\src\main\java\com\college\message\client\EntrustClient.java
+F:\Test_Maven\collegeEntrust\ce-message\ce-message-service\src\main\java\com\college\CeMsgApplication.java
+F:\Test_Maven\collegeEntrust\ce-message\ce-message-service\src\main\java\com\college\message\service\impl\MessageServiceImpl.java
+F:\Test_Maven\collegeEntrust\ce-message\ce-message-service\src\main\java\com\college\message\mapper\MessageMapper.java

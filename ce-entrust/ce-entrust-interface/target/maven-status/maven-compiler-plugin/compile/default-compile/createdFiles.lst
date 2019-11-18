@@ -1,0 +1,4 @@
+com\college\entrust\api\EntrustApi.class
+com\college\entrust\pojo\Entrust.class
+com\college\entrust\pojo\AcceptEntrust.class
+com\college\entrust\vo\SearchRequest.class

@@ -1,0 +1,4 @@
+com\college\face\api\FaceApi.class
+com\college\face\config\FaceProperties.class
+com\college\CeFaceApplication.class
+com\college\face\web\FaceController.class

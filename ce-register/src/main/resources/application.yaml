@@ -1,5 +1,6 @@
 server:
   port: 10086
+  max-http-header-size: 10000000
 spring:
   application:
     name: ce-register

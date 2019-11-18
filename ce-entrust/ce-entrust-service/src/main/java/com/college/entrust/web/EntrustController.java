@@ -177,4 +177,27 @@ public class EntrustController {
 
     }
 
+    /**
+     * 确认被该用户接受委托
+     * @param id
+     * @return
+     */
+    @PutMapping("releaseConfirm/{id}")
+    public ResponseEntity<Void> releaseConfirm(@PathVariable("id")Long id){
+        entrustService.releaseConfirm(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    /**
+     * 确认对方完成任务
+     * @param id
+     * @return
+     */
+    @PutMapping("releaseFinish/{id}")
+    public ResponseEntity<Void> releaseFinish(@PathVariable("id")Long id)
+    {
+        entrustService.releaseFinish(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

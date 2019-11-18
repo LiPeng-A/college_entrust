@@ -1,0 +1,6 @@
+com\college\auth\web\AuthController.class
+com\college\CeAuthApplication.class
+com\college\auth\client\UserClient.class
+com\college\auth\config\JwtProperties.class
+com\college\auth\service\AuthService.class
+com\college\auth\service\impl\AuthServiceImpl.class
