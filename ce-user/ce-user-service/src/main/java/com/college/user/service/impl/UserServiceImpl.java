@@ -234,6 +234,7 @@ public class UserServiceImpl implements UserService {
         {
             throw new EntrustException(ExceptionEnum.FACE_INVALID);
         }
+        //判断人脸是不是正确
         Map<String,Object> result = (Map<String, Object>) map.get("result");
         if(CollectionUtils.isEmpty(result))
         {
@@ -255,5 +256,18 @@ public class UserServiceImpl implements UserService {
             throw new EntrustException(ExceptionEnum.INVALID_USERNAME_AND_PASSWORD);
         }
 
+    }
+
+    @Override
+    public Boolean queryPassword(Long id, String password) {
+        User user = userMapper.selectByPrimaryKey(id);
+        if(user==null)
+        {
+            throw new EntrustException(ExceptionEnum.USER_NOT_FOUND);
+        }
+        Boolean flag = CodecUtils.passwordBcryptDecode(saltProperties.getSalt() + password, user.getPassword());
+
+
+        return flag;
     }
 }

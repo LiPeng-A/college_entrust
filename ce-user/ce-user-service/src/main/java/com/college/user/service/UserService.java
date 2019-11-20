@@ -36,4 +36,7 @@ public interface UserService {
     Map<String,Object> updateFace(String str, Long id);
 
     String faceLogin(String str);
+
+    //查询密码是否正确
+    Boolean queryPassword(Long id, String password);
 }

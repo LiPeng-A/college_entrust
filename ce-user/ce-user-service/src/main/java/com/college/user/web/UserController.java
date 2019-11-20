@@ -155,4 +155,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @GetMapping("password/{id}")
+    public ResponseEntity<Boolean> queryPassword(@PathVariable("id")Long id,@RequestParam("password")String password){
+
+        return ResponseEntity.ok(userService.queryPassword(id,password));
+    }
+
 }
