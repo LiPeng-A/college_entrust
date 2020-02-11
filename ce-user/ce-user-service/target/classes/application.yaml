@@ -5,7 +5,7 @@ spring:
     name: user-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/college?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost/college?useSSL=false&serverTimezone=UTC
     username: root
     password: 123456
   rabbitmq:
@@ -32,6 +32,6 @@ ce:
   jwt:
     secret: college@Login(Auth}*^31)xinxiang% # 登录校验的密钥
     pubKeyPath: f:/upload/id_rsa.pub # 公钥地址
-    priKeyPath: f:/upload/id_rsa.pri # 私钥地址
+    priKeyPath:  f:/upload/id_rsa.pri # 私钥地址
     expire: 30 # 过期时间,单位分钟
     cookieName: CE-TOKEN

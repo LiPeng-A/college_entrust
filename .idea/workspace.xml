@@ -2,15 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="492ad38a-311d-4d76-ac20-6e8eed50f7be" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/target/ce-user-service-1.0.0-SNAPSHOT.jar.original" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/resources/application.yaml" afterPath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/resources/application.yaml" />
-      <change beforePath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/target/classes/application.yaml" afterPath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/target/classes/application.yaml" />
-      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/service/UserService.java" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/service/UserService.java" />
-      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/service/impl/UserServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/web/UserController.java" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/web/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/com/college/user/service/UserService.class" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/com/college/user/service/UserService.class" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/resources/application.yaml" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/resources/application.yaml" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/ce-auth-service-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/ce-auth-service-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/ce-auth-service-1.0.0-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/ce-auth-service-1.0.0-SNAPSHOT.jar.original" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/application.yaml" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/application.yaml" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/CeAuthApplication.class" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/CeAuthApplication.class" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/config/JwtProperties.class" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/config/JwtProperties.class" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/service/AuthService.class" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/service/AuthService.class" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/service/impl/AuthServiceImpl.class" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/service/impl/AuthServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/web/AuthController.class" afterPath="$PROJECT_DIR$/ce-auth/ce-auth-service/target/classes/com/college/auth/web/AuthController.class" />
+      <change beforePath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/target/ce-entrust-service-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/target/ce-entrust-service-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/target/ce-entrust-service-1.0.0-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/ce-entrust/ce-entrust-service/target/ce-entrust-service-1.0.0-SNAPSHOT.jar.original" />
+      <change beforePath="$PROJECT_DIR$/ce-face/target/ce-face-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-face/target/ce-face-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-gateway/src/main/resources/application.yaml" afterPath="$PROJECT_DIR$/ce-gateway/src/main/resources/application.yaml" />
+      <change beforePath="$PROJECT_DIR$/ce-gateway/target/ce-gateway-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-gateway/target/ce-gateway-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-gateway/target/ce-gateway-1.0.0-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/ce-gateway/target/ce-gateway-1.0.0-SNAPSHOT.jar.original" />
+      <change beforePath="$PROJECT_DIR$/ce-gateway/target/classes/application.yaml" afterPath="$PROJECT_DIR$/ce-gateway/target/classes/application.yaml" />
+      <change beforePath="$PROJECT_DIR$/ce-message/ce-message-service/target/ce-message-service-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-message/ce-message-service/target/ce-message-service-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-message/ce-message-service/target/ce-message-service-1.0.0-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/ce-message/ce-message-service/target/ce-message-service-1.0.0-SNAPSHOT.jar.original" />
+      <change beforePath="$PROJECT_DIR$/ce-register/pom.xml" afterPath="$PROJECT_DIR$/ce-register/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/ce-register/src/main/docker/dockerfile" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ce-register/target/ce-register-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-register/target/ce-register-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-register/target/ce-register-1.0.0-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/ce-register/target/ce-register-1.0.0-SNAPSHOT.jar.original" />
+      <change beforePath="$PROJECT_DIR$/ce-sms/target/ce-sms-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-sms/target/ce-sms-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-sms/target/ce-sms-1.0.0-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/ce-sms/target/ce-sms-1.0.0-SNAPSHOT.jar.original" />
+      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/pom.xml" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/resources/application.yaml" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/src/main/resources/application.yaml" />
+      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/target/ce-user-service-1.0.0-SNAPSHOT-exec.jar" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/target/ce-user-service-1.0.0-SNAPSHOT-exec.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/target/ce-user-service-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/target/ce-user-service-1.0.0-SNAPSHOT.jar" />
+      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/application.yaml" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/application.yaml" />
       <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/com/college/user/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/com/college/user/service/impl/UserServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/com/college/user/web/UserController.class" afterPath="$PROJECT_DIR$/ce-user/ce-user-service/target/classes/com/college/user/web/UserController.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,18 +75,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ce-register/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -126,23 +138,23 @@
         <option value="$PROJECT_DIR$/ce-face/src/main/java/com/college/face/api/FaceApi.java" />
         <option value="$PROJECT_DIR$/ce-sms/pom.xml" />
         <option value="$PROJECT_DIR$/ce-entrust/pom.xml" />
-        <option value="$PROJECT_DIR$/ce-user/ce-user-service/pom.xml" />
         <option value="$PROJECT_DIR$/ce-face/pom.xml" />
         <option value="$PROJECT_DIR$/ce-common/pom.xml" />
-        <option value="$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/resources/application.yaml" />
         <option value="$PROJECT_DIR$/ce-face/src/main/resources/application.yaml" />
-        <option value="$PROJECT_DIR$/ce-gateway/src/main/resources/application.yaml" />
         <option value="$PROJECT_DIR$/ce-message/ce-message-service/src/main/resources/application.yaml" />
         <option value="$PROJECT_DIR$/ce-sms/src/main/resources/application.yaml" />
-        <option value="$PROJECT_DIR$/ce-user/ce-user-service/src/main/resources/application.yaml" />
         <option value="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/web/UserController.java" />
         <option value="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/service/UserService.java" />
         <option value="$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/resources/application.yaml" />
-        <option value="$PROJECT_DIR$/ce-register/src/main/resources/application.yaml" />
-        <option value="$PROJECT_DIR$/ce-register/pom_docker.xml" />
-        <option value="$PROJECT_DIR$/ce-register/pom.xml" />
         <option value="$PROJECT_DIR$/ce-register/src/main/docker/dockerfile" />
+        <option value="$PROJECT_DIR$/ce-register/pom.xml" />
+        <option value="$PROJECT_DIR$/ce-register/pom_docker.xml" />
+        <option value="$PROJECT_DIR$/ce-user/ce-user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/resources/application.yaml" />
+        <option value="$PROJECT_DIR$/ce-register/src/main/resources/application.yaml" />
+        <option value="$PROJECT_DIR$/ce-user/ce-user-service/src/main/resources/application.yaml" />
+        <option value="$PROJECT_DIR$/ce-gateway/src/main/resources/application.yaml" />
       </list>
     </option>
   </component>
@@ -167,15 +179,35 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand />
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ce-user-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ce-user-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="collegeEntrust" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="collegeEntrust" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
       <select />
     </treeState>
   </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-7" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="294" />
+    <option name="y" value="112" />
     <option name="width" value="1300" />
     <option name="height" value="807" />
   </component>
@@ -197,7 +229,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,12 +239,13 @@
             <path>
               <item name="collegeEntrust" type="b2602c69:ProjectViewProjectNode" />
               <item name="collegeEntrust" type="462c0819:PsiDirectoryNode" />
-              <item name="ce-register" type="462c0819:PsiDirectoryNode" />
+              <item name="ce-entrust" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
@@ -225,8 +257,8 @@
     <property name="project.structure.side.proportion" value="0.20412844" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/cnetrust" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -241,15 +273,15 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.college.upload.service.impl" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.college.user.config" />
       <recent name="com.college.common.enums" />
       <recent name="com.college.entrust.config" />
       <recent name="com.college.user.api" />
       <recent name="com.college.auth.config" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Test_Maven\collegeEntrust\ce-auth\ce-auth-common\src\main\java\com\college\auth\utils" />
@@ -498,7 +530,26 @@
       <workItem from="1574142804947" duration="2702000" />
       <workItem from="1574146658670" duration="760000" />
       <workItem from="1574148651686" duration="4483000" />
-      <workItem from="1574228019574" duration="2412000" />
+      <workItem from="1574228019574" duration="3849000" />
+      <workItem from="1574242958384" duration="1136000" />
+      <workItem from="1574319669692" duration="3826000" />
+      <workItem from="1574398401381" duration="652000" />
+      <workItem from="1574399956879" duration="1754000" />
+      <workItem from="1574408012609" duration="5486000" />
+      <workItem from="1574484148892" duration="3814000" />
+      <workItem from="1574580683544" duration="1893000" />
+      <workItem from="1574582605776" duration="695000" />
+      <workItem from="1574780756513" duration="9000" />
+      <workItem from="1574783271805" duration="712000" />
+      <workItem from="1575347521334" duration="1000" />
+      <workItem from="1575445516145" duration="6000" />
+      <workItem from="1575639151153" duration="11000" />
+      <workItem from="1575700964694" duration="985000" />
+      <workItem from="1575785436126" duration="154000" />
+      <workItem from="1576327002831" duration="420000" />
+      <workItem from="1577701406965" duration="5000" />
+      <workItem from="1577853894140" duration="661000" />
+      <workItem from="1578109114976" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="dockerfile">
       <created>1574231292310</created>
@@ -511,7 +562,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257765000" />
+    <option name="totallyTimeSpent" value="281441000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -523,12 +574,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17643923" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38136512" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.116204694" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -541,12 +591,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2340195" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38136512" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19176598" sideWeight="0.4978678" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15565032" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1705757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -618,35 +668,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="424" column="0" lean-forward="false" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.8.RELEASE/spring-webmvc-5.0.8.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="571" column="0" lean-forward="false" selection-start-line="571" selection-start-column="0" selection-end-line="571" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.8.RELEASE/spring-web-5.0.8.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.8.RELEASE/spring-web-5.0.8.RELEASE-sources.jar!/org/springframework/web/filter/HttpPutFormContentFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="61" column="13" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/user/config/WebMvcConfig.java" />
     <entry file="file://$PROJECT_DIR$/ce-common/src/main/java/com/college/common/utils/JsonUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
@@ -675,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/java/com/college/auth/config/JwtProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/java/com/college/auth/web/AuthController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -689,44 +703,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/CeUserApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="e#508#509#0" expanded="false" />
-            <element signature="e#570#571#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/java/com/college/auth/service/impl/AuthServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/java/com/college/CeEntrustApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="68" column="25" lean-forward="false" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="31" column="61" lean-forward="false" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -741,22 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-entrust/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-user/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,14 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-user/ce-user-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2403">
-          <caret line="89" column="12" lean-forward="false" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -828,32 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="82" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-sms/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-278">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-gateway/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="55" column="12" lean-forward="false" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,33 +801,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ce-message/ce-message-service/src/main/resources/application.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-sms/src/main/resources/application.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/resources/application.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/java/com/college/CeAuthApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3969">
           <caret line="160" column="54" lean-forward="true" selection-start-line="160" selection-start-column="54" selection-end-line="160" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,7 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="972">
           <caret line="40" column="21" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -921,15 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5751">
           <caret line="240" column="38" lean-forward="false" selection-start-line="240" selection-start-column="38" selection-end-line="240" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/java/com/college/entrust/service/impl/EntrustServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,62 +833,186 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="23" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-register/src/main/docker/dockerfile" />
+    <entry file="file://$PROJECT_DIR$/ce-register/ce-register.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-register/pom_docker.xml" />
+    <entry file="file://$PROJECT_DIR$/ce-register/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-gateway/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="38" column="51" lean-forward="false" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/java/com/college/auth/config/JwtProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="35" column="41" lean-forward="false" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-user/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-user/ce-user-service/src/main/java/com/college/CeUserApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-user/ce-user-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="74" column="45" lean-forward="false" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-message/ce-message-service/src/main/resources/application.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ce-user/ce-user-service/src/main/resources/application.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="702">
+          <caret line="26" column="44" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="26" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-auth/ce-auth-service/src/main/resources/application.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="21" column="26" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ce-gateway/src/main/resources/application.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/resources/application.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="18" column="48" lean-forward="true" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="297">
+          <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ce-register/src/main/resources/application.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="189">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ce-register/pom_docker.xml">
+    <entry file="file://$PROJECT_DIR$/ce-entrust/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="297">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ce-register/src/main/docker/dockerfile">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-commons/2.0.1.RELEASE/spring-cloud-commons-2.0.1.RELEASE-sources.jar!/org/springframework/cloud/client/discovery/EnableDiscoveryClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/java/com/college/CeEntrustApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="75" column="3" lean-forward="false" selection-start-line="75" selection-start-column="3" selection-end-line="82" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/resources/application.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-service/src/main/java/com/college/entrust/service/impl/EntrustServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="68" column="54" lean-forward="false" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-interface/src/main/java/com/college/entrust/pojo/Entrust.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-entrust/ce-entrust-interface/src/main/java/com/college/entrust/pojo/AcceptEntrust.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ce-register/pom.xml">
+    <entry file="file://$PROJECT_DIR$/ce-sms/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        <state relative-caret-position="27">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-sms/src/main/resources/application.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ce-sms/src/main/java/com/college/sms/utils/SmsUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1050,7 +1070,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>ce-message</last-edited>
+          <last-edited>ce-auth-service</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
