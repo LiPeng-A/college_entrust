@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>寻求帮助-详情 </title>
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/findHelper.css">
+
+</head>
+<body>
+<div id="detail">
+    <!-- Loading -->
+    <div id="loading" class="loading-layer">
+        <div class="adjust-block">
+            <div class="load ">
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <header class="header" id="nav-bottom">
+        <cg-Top/>
+    </header>
+    <!--头部页面-->
+    <div class="section page-header">
+        <div class="head-overlayer"></div>
+        <div class="head-content">
+            <div class="adjust-block">
+                <h3 class="head-title  animate fadeInUp">
+                    寻求帮助
+                </h3>
+                <div class="head-subtitle  animate fadeInUp">
+                    困难就是用来克服的
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--面包屑-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+            <li class="breadcrumb-item"><a href="findHelp.html">寻求帮助</a></li>
+            <li class="breadcrumb-item active" aria-current="page">详情</li>
+        </ol>
+    </nav>
+    <!--新增帮助 模态框-->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-backdrop="static" @click="loadEntrust()">添加新的帮助
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">添加新的帮助</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="isUpdate=false">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div>
+                            <div class="form-group">
+                                <label for="tfile1">请选择上传的图片</label>
+                                <input type="file" name="pic" class="form-control-file" @change="getFile($event)"
+                                       id="tfile1" ref="inputer">
+                            </div>
+                            <div class="form-group">
+                                <label for="tfile2">请选择上传的图片</label>
+                                <input type="file" class="form-control-file" @change="getFile1($event)"
+                                       id="tfile2" ref="inputer">
+                            </div>
+                            <div class="form-group">
+                                <label for="tfile3">请选择上传的图片</label>
+                                <input type="file" class="form-control-file" @change="getFile2($event)"
+                                       id="tfile3" ref="inputer">
+                            </div>
+                            <ul v-show="isShow" v-for="(img,i) in image">
+                                <li style="float: left" v-if="i!==2"><img :src="img.slice(17)"
+                                                                          style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                                <li v-else><img :src="img.slice(17)"
+                                                style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                            </ul>
+                            <ul v-show="!isShow" id="localImag">
+                                <li style="float: left"><img id="img1" src=""
+                                                             style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                                <li style="float:left"><img src="" id="img2"
+                                                            style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                                <li><img src="" id="img3"
+                                         style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="title" class="col-form-label">主标题:</label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                   v-model.lazy="newEntrust.title">
+                        </div>
+                        <div class="form-group">
+                            <label for="subTitle" class="col-form-label">副标题:</label>
+                            <input type="text" class="form-control" id="subTitle" name="subTitle"
+                                   v-model.lazy="newEntrust.sub_title">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">详细内容:</label>
+                            <textarea class="form-control" id="message-text" name="detail"
+                                      v-model.lazy="newEntrust.detail"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="isUpdate=false">取消
+                    </button>
+                    <button type="button" v-show="!isUpdate" class="btn btn-primary" @click="createEntrust($event)">保存
+                    </button>
+                    <button type="button" v-show="isUpdate" class="btn btn-primary" @click="update($event)"
+                            data-backdrop="static">修改
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section page-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="card" style="width: 100%;">
+                            <div class="helper-img">
+                                <ul v-for="(img,i) in image">
+                                    <li style="float: left" v-if="i!==2"><img :src="img.slice(17)"
+                                                                              style="width: 250px;height: 250px;margin: 0px 10px 10px 10px">
+                                    </li>
+                                    <li v-else><img :src="img.slice(17)"
+                                                    style="width: 250px;height: 250px;margin: -15px 10px 10px 10px">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title alert alert-secondary" v-text="entrust.create_time"></h5>
+                                <h5 class="card-title alert alert-secondary" v-text="entrust.title">
+                                    主标题：由于没有时间，请求帮忙拿快递</h5>
+                                <h6 v-text="entrust.sub_title" class="alert alert-danger">副标题：由于没有时间，请求帮忙拿快递</h6>
+                                <p class="card-text alert alert-info" v-text="entrust.detail"> 详细内容：</p>
+                            </div>
+                            <div class="post-info" v-if="acc!==null">
+                                <h5 class="alert alert-info" role="alert" v-if="entrust.status===0">当前委托状态:<span
+                                        class="alert alert-danger"
+                                        role="alert">未被接受</span></h5>
+                                <h5 v-if="acc.release_status===0 & acc.accept_status===1"
+                                    class="alert alert-primary" role="alert">
+                                    当前委托状态:<span style="color:#00E676;">已接受,你未确定</span>
+                                </h5>
+                                <h5 v-else-if="acc.release_status===1 & acc.accept_status===1"
+                                    class="alert alert-primary" role="alert">
+                                    当前委托状态:<span style="color:#00E676;">已接受,双方已确认</span>
+                                </h5>
+                                <h5 v-else-if="acc.release_status===1 & acc.accept_status===2"
+                                    class="alert alert-primary" role="alert">
+                                    当前委托状态:<span style="color:#f4b400;">已完成,你未确认</span>
+                                </h5>
+                                <h5 v-else-if="acc.release_status===2 & acc.accept_status===2 "
+                                    class="alert alert-primary" role="alert">
+                                    当前委托状态:<span style="color: #00E676">已完成,双方已确认</span>
+                                </h5>
+                            </div>
+                            <div class="post-info" v-else-if="entrust===null">
+                                <h5 class="alert alert-info" role="alert">当前委托状态:<span class="alert alert-danger"
+                                                                                       role="alert">未被接受</span></h5>
+                            </div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal" @click="updateEntrust(entrust.id)"
+                                        style="float: left;margin: 0px 10px 0px 15%"
+                                        v-if="entrust.status===0"
+                                >修改
+                                </button>
+                                <button type="button" class="btn btn-info" @click="confirm(entrust.id)"
+                                        v-if="acc.release_status===0 & acc.accept_status===1"
+                                        style="float:left;margin:0px 10px 0px 0px "
+                                >已接受，请您确认
+                                </button>
+                                <button type="button" class="btn btn-info" @click="finish(entrust.id)"
+                                        v-if="acc.release_status===1 & acc.accept_status===2"
+                                        style="float:left;margin:0px 10px 0px 0px "
+                                >已完成，请您确认
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-sm"
+                                        @click="deleteEntrust(entrust.id)" style="margin: 0px 10px 0px 0px">删除
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <aside class="sidebar">
+                        <!--我的帮助-->
+                        <div class="sidebar-wdg">
+                            <h3 class="sidebar-title">我的帮帮</h3>
+                            <ul class="sidebar-list">
+                                <li><a href="findHelp.html">我发布的委托</a></li>
+                                <li><a href="acceptHelp.html">我接收的委托</a></li>
+                                <li><a href="userInfo.html">个人信息</a></li>
+                                <li><a href="alertInfo.html">修改个人信息</a></li>
+                                <li><a href="alertPassword.html">修改密码</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 尾部 -->
+    <div class="section footer-top" id="nav-footer">
+        <cg-footer/>
+    </div>
+
+    <footer class="footer-bottom">
+        <p class="copyright">
+            &copy;2019 Oak.com版权所有 <i class="fa fa-heart-o"></i>客服QQ：1169506004
+        </p>
+    </footer>
+</div>
+<!-- End Footer -->
+<script src="./js/jquery.js"></script>
+<script src="js/image-loaded.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/app.js"></script>
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+    //创建vue实例
+    var vm = new Vue({
+        el: "#detail",
+        data: {
+            user: {},
+            entrust: {},
+            image: [],
+            isUpdate: false,
+            newEntrust: {
+                title: "",
+                sub_title: "",
+                detail: "",
+            },
+            file: '',
+            file2: '',
+            file3: '',
+            isShow: false,
+            e_id: "",
+            acc: {}
+        },
+        created() {
+            this.loadData();
+        },
+        methods: {
+            getUrlParam: function (name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return decodeURI(r[2]);
+                }
+                return null;
+            },
+            loadData() {
+                let e_id = this.getUrlParam("id");
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    cg.http.get("/entrust/accept-detail/" + e_id + "").then(resp => {
+                        this.entrust = resp.data;
+                        if (resp.data.acceptEntrust !== null) {
+                            this.acc = resp.data.acceptEntrust;
+                        }
+                        this.image = resp.data.image.split(",");
+                    }).catch(error => {
+                        alert("服务器忙");
+                    })
+                }).catch(error => {
+                    alert("您还未登录，请登录");
+                    window.location.href = "login.html";
+                })
+            },
+            getFile(event) {
+                this.isShow = false;
+                this.file = event.target.files[0];
+                var file1 = document.getElementById("tfile1");
+                var img1 = document.getElementById("img1");
+                setImagePreview(this.file, file1, img1);
+                console.log(this.file);
+            },
+            getFile1(event) {
+                this.isShow = false;
+                this.file2 = event.target.files[0];
+                let file2 = document.getElementById("tfile2");
+                let img2 = document.getElementById("img2");
+                if (this.file2.name === this.file.name) {
+                    alert("该图片已经存在");
+                    return;
+                }
+                setImagePreview(this.file2, file2, img2);
+                console.log(this.file2);
+            },
+            getFile2(event) {
+                this.isShow = false;
+                this.file3 = event.target.files[0];
+                let file3 = document.getElementById("tfile3");
+                let img3 = document.getElementById("img3");
+                if (this.file3.name === this.file2.name || this.file3.name === this.file.name) {
+                    alert("该图片已经存在");
+                    return;
+                }
+                setImagePreview(this.file3, file3, img3);
+                console.log(this.file3);
+            },
+            //创建新的委托
+            createEntrust(event) {
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    event.preventDefault();
+                    //获取文件内容
+                    let formData = new FormData();
+                    formData.append("file", this.file);
+                    formData.append("file1", this.file2);
+                    formData.append("file2", this.file3);
+                    formData.append("title", this.newEntrust.title);
+                    formData.append("sub_title", this.newEntrust.sub_title);
+                    formData.append("detail", this.newEntrust.detail);
+
+                    //创建新的委托
+                    cg.http.post("entrust/newEntrust", formData).then(resp => {
+                        if (resp.status === 201) {
+                            window.location.href = "findHelp.html";
+                        }
+                    }).catch(error => {
+                        alert("创建新的委托失败");
+                    })
+                }).catch(error => {
+                    alert("您还未登录，请登录");
+                    window.location.href = "login.html";
+                })
+            },
+            updateEntrust(id) {
+                this.isUpdate = true;
+                this.isShow = true;
+                this.e_id = id;
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    //修改当前委托信息
+                    cg.http.get("/entrust/echo/" + id + "").then(resp => {
+                        this.newEntrust = resp.data;
+                        this.image = resp.data.image.split(",");
+                    }).catch(error => {
+                        alert("查询当前委托信息失败");
+                    });
+                }).catch(error => {
+                    alert("您还未登录，请登录");
+                    window.location.href = "login.html";
+                })
+            },
+            update(event) {
+
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    //获取文件内容
+                    let formData = new FormData();
+                    formData.append("file", this.file);
+                    formData.append("file1", this.file2);
+                    formData.append("file2", this.file3);
+                    formData.append("title", this.newEntrust.title);
+                    formData.append("sub_title", this.newEntrust.sub_title);
+                    formData.append("detail", this.newEntrust.detail);
+                    formData.append("id", this.e_id);
+                    //修改当前委托信息
+                    if (this.file === "" || this.file2 === "" || this.file3 === "") {
+                        alert("请选择要上传的图片");
+                        return;
+                    }
+                    cg.http.post("/entrust/new", formData).then(resp => {
+                        window.location.reload();
+                    }).catch(error => {
+                        alert("修改当前委托信息失败");
+                    });
+                }).catch(error => {
+                    alert("您还未登录，请登录");
+                    window.location.href = "login.html";
+                })
+            },
+            deleteEntrust(id) {
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    //删除当前委托信息
+                    if (window.confirm("是否确认删除当前委托")) {
+                        //删除当前委托
+                        cg.http.delete("/entrust/data/" + id + "").then(resp => {
+                            window.location.href = "findHelp.html";
+                        }).catch(error => {
+                            alert("删除当前委托失败")
+                        })
+                    }
+                }).catch(error => {
+                    alert("您还未登录，请登录");
+                    window.location.href = "login.html";
+                })
+            },
+            loadEntrust() {
+                this.newEntrust.title = "";
+                this.newEntrust.sub_title = "";
+                this.newEntrust.detail = "";
+
+            },
+            //确认被接收
+            confirm(id) {
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    cg.http.put("/entrust/releaseConfirm/" + id + "").then(resp => {
+                        window.location.reload();
+                    }).catch(error => {
+                        alert("确定失败，服务器繁忙，请稍后重试")
+                    })
+                }).catch(error => {
+                    alert("您还未登录，请登录");
+                    window.location.href = "login.html";
+                })
+            },
+            finish(id) {
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    cg.http.put("/entrust/releaseFinish/" + id + "").then(resp => {
+                        window.location.reload();
+                    }).catch(error => {
+                        alert("确定失败，服务器繁忙，请稍后重试")
+                    });
+                }).catch(error => {
+                    alert("您还未登录，请登录");
+                    window.location.href = "login.html";
+                })
+            },
+            registerFace(){
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    //确认用户已经登录的话
+                    window.location.href="faceRegister.html?id="+this.user.id;
+                }).catch(error=>{
+                    alert("未登录");
+                    window.location.href="login.html";
+                })
+            }
+        },
+        components: {
+            cgFooter: () => import('./js/pages/footer.js'),
+            cgTop: () => import('./js/pages/top.js')
+        }
+
+    });
+
+    $(function () {
+        $("#exampleModal").modal({backdrop: 'static', keyboard: false, show: false});
+
+    });
+
+    //实现实时预览的函数
+    function setImagePreview(avalue, docObj, imgObjPreview) {
+        if (docObj.files && docObj.files[0]) {
+            //火狐下，直接设img属性
+            //imgObjPreview.src = docObj.files[0].getAsDataURL();
+            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+        } else {
+            //IE下，使用滤镜
+            docObj.select();
+            var imgSrc = document.selection.createRange().text;
+            var localImagId = document.getElementById("localImag");
+            //图片异常的捕捉，防止用户修改后缀来伪造图片
+            try {
+                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)"
+                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+            } catch (e) {
+                alert("您上传的图片格式不正确，请重新选择!");
+                return false;
+            }
+            imgObjPreview.style.display = 'none';
+            document.selection.empty();
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

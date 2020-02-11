@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>college-接受的委托</title>
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div id="access">
+    <!-- Loading -->
+    <div id="loading" class="loading-layer">
+        <div class="adjust-block">
+            <div class="load ">
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <header class="header" id="nav-bottom">
+        <cg-Top/>
+    </header>
+
+
+    <div class="section page-header">
+        <div class="head-overlayer"></div>
+        <div class="head-content">
+            <div class="adjust-block">
+                <h3 class="head-title animate fadeInUp">
+                    我的帮帮
+                </h3>
+                <div class="head-subtitle animate fadeInUp">
+                    生活的苦涩，一切都会好起来了的。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+            <li class="breadcrumb-item"><a href="acceptHelp.html">我接受的委托</a></li>
+            <li class="breadcrumb-item">我接收的委托-详情</li>
+        </ol>
+    </nav>
+    <!--主体-->
+    <div class="section page-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="card" style="width: 100%;">
+                            <div class="helper-img">
+                                <ul v-for="(img,i) in image">
+                                    <li style="float: left" v-if="i!==2"><img :src="img.slice(17)"
+                                                                              style="width: 250px;height: 250px;margin: 0px 10px 10px 10px">
+                                    </li>
+                                    <li v-else><img :src="img.slice(17)"
+                                                    style="width: 250px;height: 250px;margin: -15px 10px 10px 10px">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title alert alert-secondary" v-text="entrust.title">
+                                    主标题：由于没有时间，请求帮忙拿快递</h5>
+                                <h6 v-text="entrust.sub_title" class="alert alert-danger">副标题：由于没有时间，请求帮忙拿快递</h6>
+                                <p class="card-text alert alert-info" v-text="entrust.detail"> 详细内容：</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">委托人姓名：<span v-text="user.username"
+                                                                        class="alert alert-primary"></span></li>
+                                <li class="list-group-item">委托人电话:<span v-text="user.phone"
+                                                                        class="alert alert-secondary"></span></li>
+                            </ul>
+                            <div class="post-info">
+                                <h5 v-if="accept.release_status===0 & accept.accept_status===1 ">当前委托状态:<span
+                                        style="color:#00E676;">已接受,对方未确定</span>
+                                </h5>
+                                <h5 v-else-if="accept.release_status===1 & accept.accept_status===1 ">当前委托状态:<span
+                                        style="color:#00E676;">已接受,对方已确定</span>
+                                </h5>
+                                <h5 v-else-if="accept.release_status===1 & accept.accept_status===2 ">当前委托状态:<span
+                                        style="color:#f4b400;">已完成，对方未确认</span>
+                                </h5>
+                                <h5 v-else-if="accept.release_status===2 & accept.accept_status===2 ">当前委托状态:<span
+                                        style="color:#f4b400;">已完成，对方已确认</span>
+                                </h5>
+                            </div>
+                            <button type="button" v-if="accept.release_status===1 & accept.accept_status===1 "
+                                    class="btn btn-primary" @click="confirmEntrust(entrust.id)" v-show="true">确定委托完成
+                            </button>
+                            <!-- 放弃委托的模态-->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal" @click="getEid(entrust.id)"
+                                    v-if="entrust.acceptEntrust.accept_status===1 & entrust.acceptEntrust.release_status===0"
+                                    v-show="true">
+                                放弃委托
+                            </button>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">放弃委托信息提示</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        您确定要放弃当前委托
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">我再想想
+                                        </button>
+                                        <button type="button" class="btn btn-primary"
+                                                @click="abandonEntrust(entrust_id)">我确定
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <aside class="sidebar">
+                        <!--我的帮助-->
+                        <div class="sidebar-wdg">
+                            <h3 class="sidebar-title">我的帮帮</h3>
+                            <ul class="sidebar-list">
+                                <li><a href="findHelp.html">我发布的委托</a></li>
+                                <li><a href="acceptHelp.html">我接收的委托</a></li>
+                                <li><a href="userInfo.html">个人信息</a></li>
+                                <li><a href="alertInfo.html">修改个人信息</a></li>
+                                <li><a href="alertPassword.html">修改密码</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 尾部 -->
+    <div class="section footer-top" id="nav-footer">
+        <cg-footer/>
+    </div>
+
+    <footer class="footer-bottom">
+        <p class="copyright">
+            &copy;2019 Oak.com版权所有 <i class="fa fa-heart-o"></i>客服QQ：1169506004
+        </p>
+    </footer>
+</div>
+<!-- End Footer -->
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue/vue.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/image-loaded.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+    var indexFooter = new Vue({
+        el: "#access",
+        data: {
+            user: {},
+            entrust: {},
+            image: [],
+            accept: {},
+            entrust_id: ""
+        },
+        created() {
+            this.loadData();
+        },
+        methods: {
+            getUrlParam: function (name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return decodeURI(r[2]);
+                }
+                return null;
+            },
+            loadData() {
+                let e_id = this.getUrlParam("id");
+                cg.http.get("/auth/verify").then(r => {
+                    cg.http.get("/entrust/accept-detail/" + e_id + "").then(resp => {
+                        this.entrust = resp.data;
+                        this.image = resp.data.image.split(",");
+                        this.accept = resp.data.acceptEntrust;
+                        cg.http.get("/user/userDetail/"+resp.data.user_id+"").then(user=>{
+                            this.user=user.data;
+                        })
+                    }).catch(error => {
+                    })
+                }).catch(error => {
+                    alert("未登录 ");
+                    window.location.href="login.html";
+                })
+
+            },
+            confirmEntrust(id) {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    cg.http.put("/entrust/confirm/" + id + "").then(resp => {
+                        window.location.reload();
+                    }).catch(error => {
+
+                    });
+                }).catch(error => {
+                    alert("未登录 ");
+                    window.location.href="login.html";
+                })
+            },
+            abandonEntrust(id) {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    cg.http.delete("/entrust/" + id + "").then(resp => {
+                        window.location.href = "acceptHelp.html";
+                    }).catch(error => {
+                    })
+                }).catch(error => {
+                    alert("未登录 ");
+                    window.location.href="login.html";
+                })
+            },
+            getEid(id) {
+                this.entrust_id = id;
+            }
+        },
+        components: {
+            cgTop: () => import('./js/pages/top.js'),
+            cgFooter: () => import('./js/pages/footer.js')
+        },
+        watch: {}
+    });
+</script>
+</body>
+</html>

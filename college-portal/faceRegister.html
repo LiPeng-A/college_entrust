@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>人脸识别注册</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/form-elements.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+
+<body>
+
+<!-- Top content -->
+<div class="top-content" id="faceReg">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>高校互助网人脸识别</strong> 注册</h1>
+                    <div class="description">
+                        <p>
+                            欢迎来到人脸识别注册页面，请点击<a href="#"><strong>录入信息</strong></a>，开始录入
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-box">
+                    <div class="form-top">
+                        <div class="form-top-left" >
+                            <h3>注册自己的人脸信息</h3>
+                            <p>在之后的登录中您可以有多种选择</p>
+                        </div>
+                        <!--logo-->
+                        <div class="form-top-right">
+                            <i class="fa fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <!--人脸信息显示模块-->
+                        <video id="video" width="400px" height="400px" autoplay="autoplay"></video>
+                        <canvas id="canvas" width="400px" height="400px" style="float: right"></canvas>
+                        <!--按钮控制页面-->
+                        <div class="social-login-buttons" style="text-align: center" >
+                            <a class="btn btn-link-2" href="javascript:void(0)" onclick="getMedia()">
+                                <i class="fa fa-facebook"></i> 开始录入信息
+                            </a>
+                            <a class="btn btn-link-2" href="javascript:void(0)" onclick="takePhoto()">
+                                <i class="fa fa-twitter"></i> 拍照
+                            </a>
+                            <a class="btn btn-link-2" href="javascript:void(0)" @click="faceRegister()">
+                                <i class="fa fa-google-plus"></i> 上传录入的信息
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 social-login">
+                    <a class="btn btn-link-2" href="register.html">
+                        返回注册页面
+                    </a>
+                    <a class="btn btn-link-2" href="login.html">
+                        前往登录
+                    </a>
+                    <a class="btn btn-link-2" href="index.html">
+                        返回首页
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Javascript -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.backstretch.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+<!--[if lt IE 10]>
+<script src="assets/js/placeholder.js"></script>
+<![endif]-->
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/vue/vue.js"></script>
+
+<script>
+
+    var vm = new Vue({
+        el: "#faceReg",
+        data: {
+            user: {},
+            result: {},
+        },
+        created() {
+        },
+        methods: {
+            faceRegister() {
+                //判断是否已经登录
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    let canvas = document.getElementById("canvas");
+                    let ctx = canvas.getContext('2d');
+                    let url = canvas.toDataURL("image/jpeg");
+                    let imgData = url.replace(/^data:image\/\w+;base64,/, "");
+                    let formData = new FormData();
+                    formData.append("url", imgData);
+                    formData.append("fid", this.user.id);
+                    cg.http.post("/user/faceReg", formData).then(resp => {
+                        this.result = resp.data;
+                        if (this.result.error_msg === "SUCCESS") {
+                            alert("人脸信息录入成功，您可以去登录了");
+                            window.location.href="index.html";
+                        }
+                    }).catch(error => {
+                        alert("上传失败,你可能已经录入过信息");
+                    });
+                }).catch(error => {
+                    alert("你还未登录，请前往登录");
+                    window.location.href = "login.html";
+                })
+            },
+        }
+    });
+
+
+    //获得video摄像头区域
+    let video = document.getElementById("video");
+
+    function getMedia() {
+        let constraints = {
+            video: {width: 400, height: 400},
+            audio: false
+        };
+        /*
+        这里介绍新的方法:H5新媒体接口 navigator.mediaDevices.getUserMedia()
+        这个方法会提示用户是否允许媒体输入,(媒体输入主要包括相机,视频采集设备,屏幕共享服务,麦克风,A/D转换器等)
+        返回的是一个Promise对象。
+        如果用户同意使用权限,则会将 MediaStream对象作为resolve()的参数传给then()
+        如果用户拒绝使用权限,或者请求的媒体资源不可用,则会将 PermissionDeniedError作为reject()的参数传给catch()
+        */
+        let promise = navigator.mediaDevices.getUserMedia(constraints);
+        promise.then(function (MediaStream) {
+            video.srcObject = MediaStream;
+            video.play();
+        }).catch(function (PermissionDeniedError) {
+            console.log(PermissionDeniedError);
+        })
+    }
+
+    function takePhoto() {
+        //获得Canvas对象
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, 400, 400);
+    }
+
+</script>
+
+</body>
+
+</html>

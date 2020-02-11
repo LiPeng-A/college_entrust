@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>通知栏 </title>
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/findHelper.css">
+
+</head>
+<body>
+<div id="detail">
+    <!-- Loading -->
+    <div id="loading" class="loading-layer">
+        <div class="adjust-block">
+            <div class="load ">
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <header class="header" id="nav-bottom">
+        <cg-Top/>
+    </header>
+
+    <!--头部页面-->
+    <div class="section page-header">
+        <div class="head-overlayer"></div>
+        <div class="head-content">
+            <div class="adjust-block">
+                <h3 class="head-title  animate fadeInUp">
+                    风的声音
+                </h3>
+                <div class="head-subtitle  animate fadeInUp">
+                    人之所以为人，是因为人与人之间有羁绊。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section page-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="alert alert-dark" role="alert" style="width: 100%;" v-for="message in messages">
+                            <span v-if="message.is_read===0"><img src="images/newLog.gif"
+                                                                  style="width: 30px; height: 30px;"></span>
+                            <span style="color: #0b2e13;cursor: pointer;" @click="info_detail(message.id)"><span
+                                    style="font-size: 25px">【系统通知】:</span>
+                                <span v-text="message.msg.substring(0,5)+'.....'"
+                                      style="font-size: 20px;font-family: 华文新魏"></span>，
+                                &nbsp;时间:&nbsp;<span v-text="cg.formatDate(message.time)"
+                                                     style="font-family: 华文新魏;font-size: 20px"></span>
+                            </span>
+                            <img src="./images/timg.jpg" style="width: 25px;height: 25px;cursor: pointer; float: right;" @click="deleteInfo(message.id)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <aside class="sidebar">
+                        <!--我的帮助-->
+                        <div class="sidebar-wdg">
+                            <h3 class="sidebar-title">我的帮帮</h3>
+                            <ul class="sidebar-list">
+                                <li><a href="findHelp.html">我发布的委托</a></li>
+                                <li><a href="acceptHelp.html">我接收的委托</a></li>
+                                <li><a href="userInfo.html">个人信息</a></li>
+                                <li><a href="alertInfo.html">修改个人信息</a></li>
+                                <li><a href="alertPassword.html">修改密码</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 尾部 -->
+    <div class="section footer-top" id="nav-footer">
+        <cg-footer/>
+    </div>
+
+    <footer class="footer-bottom">
+        <p class="copyright">
+            &copy;2019 Oak.com版权所有 <i class="fa fa-heart-o"></i>客服QQ：1169506004
+        </p>
+    </footer>
+</div>
+<!-- End Footer -->
+<script src="./js/jquery.js"></script>
+<script src="js/image-loaded.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/app.js"></script>
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+    //创建vue实例
+    var vm = new Vue({
+        el: "#detail",
+        data: {
+            user: {},
+            messages: [],
+            msg: "",
+            cg,
+        },
+        created() {
+            this.loadData();
+        },
+        methods: {
+            loadData() {
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    cg.http.get("/message/list/" + this.user.id + "").then(resp => {
+                        this.messages = resp.data;
+                    }).catch(error => {
+                        this.msg = "当前暂无新的通知"
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            info_detail(id) {
+                //校验是否登录
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    //如果登录了
+                    window.location.href = "info-detail.html?id=" + id;
+                    cg.http.put("/message/" + id + "");
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            deleteInfo(id){
+                //校验是否登录
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    //如果登录了
+                    cg.http.delete("/message/" + id + "").then(resp=>{
+                        window.location.reload();
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            registerFace(){
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    //确认用户已经登录的话
+                    window.location.href="faceRegister.html?id="+this.user.id;
+                }).catch(error=>{
+                    alert("未登录");
+                    window.location.href="login.html";
+                })
+            },
+
+        },
+        components: {
+            cgFooter: () => import('./js/pages/footer.js'),
+            cgTop: () => import('./js/pages/top.js'),
+        }
+
+    });
+
+
+</script>
+</body>
+</html>

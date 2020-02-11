@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e4648285-b237-441a-a9f6-0d12a08739cd" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>\</find>
+      <find>t</find>
+      <find>j</find>
+      <find>js/</find>
+      <find>axios</find>
+      <find>czConfig</find>
+      <find>formatDate</find>
+      <find>li</find>
+      <find>entrust.acceptEntrust</find>
+      <find>visibleCamera</find>
+      <find>cameraUpload</find>
+      <find>localImag</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>./js/</replace>
+      <replace>acc</replace>
+    </replaceStrings>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="294" />
+    <option name="y" value="112" />
+    <option name="width" value="1300" />
+    <option name="height" value="807" />
+  </component>
+  <component name="ProjectId" id="1XNF4P0GUtZnzh3ZNCbGHy6FLrN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.20412844" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\college-portal" />
+      <recent name="F:\college-portal\css" />
+      <recent name="F:\college-portal\images" />
+      <recent name="F:\college-portal\js" />
+      <recent name="F:\college-portal\css\bootstrap" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\college-portal\images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e4648285-b237-441a-a9f6-0d12a08739cd" name="Default" comment="" />
+      <created>1572590600830</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572590600830</updated>
+      <workItem from="1572590603300" duration="2969000" />
+      <workItem from="1572593594736" duration="16141000" />
+      <workItem from="1572663675075" duration="1117000" />
+      <workItem from="1572665844433" duration="22114000" />
+      <workItem from="1572743851016" duration="22375000" />
+      <workItem from="1572779458884" duration="1160000" />
+      <workItem from="1572841809478" duration="2027000" />
+      <workItem from="1572858078964" duration="3280000" />
+      <workItem from="1572928910656" duration="1586000" />
+      <workItem from="1572930673051" duration="722000" />
+      <workItem from="1572936140926" duration="4932000" />
+      <workItem from="1572944051281" duration="7932000" />
+      <workItem from="1573094616234" duration="31370000" />
+      <workItem from="1573176740294" duration="21782000" />
+      <workItem from="1573268291684" duration="21489000" />
+      <workItem from="1573350731263" duration="24393000" />
+      <workItem from="1573441002873" duration="18115000" />
+      <workItem from="1573525505052" duration="17187000" />
+      <workItem from="1573607476220" duration="18944000" />
+      <workItem from="1573705615644" duration="15613000" />
+      <workItem from="1573786715440" duration="9744000" />
+      <workItem from="1573806595577" duration="8547000" />
+      <workItem from="1573824807881" duration="612000" />
+      <workItem from="1573828127142" duration="909000" />
+      <workItem from="1573885342842" duration="21016000" />
+      <workItem from="1573963524199" duration="8182000" />
+      <workItem from="1573982373154" duration="7403000" />
+      <workItem from="1574142835084" duration="81000" />
+      <workItem from="1574146826968" duration="600000" />
+      <workItem from="1574148588119" duration="5261000" />
+      <workItem from="1574227977636" duration="33000" />
+      <workItem from="1574417335907" duration="44000" />
+      <workItem from="1574419270533" duration="4950000" />
+      <workItem from="1574484236174" duration="623000" />
+      <workItem from="1574489324501" duration="671000" />
+      <workItem from="1574579574616" duration="741000" />
+      <workItem from="1574672149605" duration="613000" />
+      <workItem from="1575347531843" duration="19000" />
+      <workItem from="1575347750116" duration="724000" />
+      <workItem from="1575351518467" duration="1517000" />
+      <workItem from="1575377311953" duration="1190000" />
+      <workItem from="1575383823973" duration="783000" />
+      <workItem from="1575445531887" duration="419000" />
+      <workItem from="1575619636136" duration="216000" />
+      <workItem from="1575639169030" duration="571000" />
+      <workItem from="1575694359746" duration="837000" />
+      <workItem from="1575787184474" duration="1213000" />
+      <workItem from="1575807244836" duration="1080000" />
+      <workItem from="1578109149930" duration="4012000" />
+      <workItem from="1580878455960" duration="198000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.20412844" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.20412844" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

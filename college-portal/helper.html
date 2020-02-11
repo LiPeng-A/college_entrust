@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>帮助别人 </title>
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div id="helper">
+    <!-- Loading -->
+    <div id="loading" class="loading-layer">
+        <div class="adjust-block">
+            <div class="load ">
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <header class="header" id="nav-bottom">
+        <cg-Top/>
+    </header>
+
+    <!--头部页面-->
+    <div class="section page-header">
+        <div class="head-overlayer"></div>
+        <div class="head-content">
+            <div class="adjust-block">
+                <h3 class="head-title  animate fadeInUp">
+                    帮助别人
+                </h3>
+                <div class="head-subtitle  animate fadeInUp">
+                    助人为乐也是一种美德！
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+            <li class="breadcrumb-item">帮助别人</li>
+        </ol>
+    </nav>
+    <center>
+        <div class="col-lg-6" style="margin:5px 5px 10px 5px;">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="搜索" v-model.lazy="search.filter"
+                       style="height: 60px;">
+                &nbsp; &nbsp; &nbsp;
+                <span class="input-group-btn">
+				<button class="btn btn-default btn-bl" type="button" @click="searchEntrust">搜索!</button>
+			</span>
+            </div>
+        </div>
+    </center>
+
+
+    <!--主体-->
+    <div class="section page-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-6" v-for="(entrust,i)  in entrusts.entrusts" :key="i">
+                            <!--每张卡片代表一个寻求帮助的事件-->
+                            <div class="blog-post" v-if="entrust.user_id!==user.id" v-show="true">
+                                <div class="post-img" v-if="entrust.image.length>0">
+                                    <a href="javascript:void(0)" @click="detail(entrust.id)">
+                                        <img :src="entrust.image.split(',')[0].slice(17)" alt>
+                                    </a>
+                                </div>
+                                <div class="post-img" v-else>
+                                    <a href="javascript:void(0)">
+                                        <img src="" alt="无上传图片">
+                                    </a>
+                                </div>
+                                <div class="post-info">
+                                    <h6 v-text="cg.formatDate(entrust.create_time)">2019/11/1</h6>
+                                </div>
+                                <div class="post-info">
+                                    <h4 v-text="entrust.title.substring(0,12)+'....'"></h4>
+                                </div>
+                                <div class="post-info">
+                                    <h5 v-text="entrust.sub_title.substring(0,15)+'.....'">由于没时间取快递.......</h5>
+                                </div>
+                                <div class="post-info">
+                                    <h5 class="alert alert-info" v-if="entrust.status=== 0" role="alert">当前委托状态:<span
+                                            style="color:red;">未被接受</span></h5>
+                                    <h5 v-else-if="entrust.status=== 1">当前委托状态:<span style="color:red;">已接受</span></h5>
+                                    <h5 v-else-if="entrust.status=== 2">当前委托状态:<span style="color:#00E676;">已确定</span>
+                                    </h5>
+                                    <h5 v-else-if="entrust.status=== 3">当前委托状态:<span style="color:#f4b400;">已完成</span>
+                                    </h5>
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-sm" v-if="entrust.status===0"
+                                        data-target="#exampleModal" data-toggle="modal"
+                                        @click="queryUser(entrust.user_id,entrust.id)">接受委托
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-sm" @click="detail(entrust.id)">
+                                    委托详情
+                                </button>
+                            </div>
+
+                            <!--每张卡片代表一个寻求帮助的事件-->
+                            <div class="blog-post" v-if="entrust.user_id===user.id" v-show="true">
+                                <div class="post-img" v-if="entrust.image.length>0">
+                                    <a href="javascript:void(0)">
+                                        <img :src="entrust.image.split(',')[0].slice(17)" alt>
+                                    </a>
+                                </div>
+                                <div class="post-img" v-else>
+                                    <a href="javascript:void(0)">
+                                        <img src="" alt="无上传图片">
+                                    </a>
+                                </div>
+                                <div class="post-info">
+                                    <h6 v-text="cg.formatDate(entrust.create_time)">2019/11/1</h6>
+                                </div>
+                                <div class="post-info">
+                                    <h4 v-text="entrust.title.substring(0,12)+'....'"></h4>
+                                </div>
+                                <div class="post-info">
+                                    <h5 v-text="entrust.sub_title.substring(0,15)+'.....'">由于没时间取快递.......</h5>
+                                </div>
+                                <div class="post-info">
+                                    <h5 class="alert alert-info" v-if="entrust.status=== 0" role="alert">当前委托状态:<span
+                                            style="color:red;">未被接受</span></h5>
+                                    <h5 v-else-if="entrust.status=== 1">当前委托状态:<span style="color:red;">已接受</span></h5>
+                                    <h5 v-else-if="entrust.status=== 2">当前委托状态:<span style="color:#00E676;">已确定</span>
+                                    </h5>
+                                    <h5 v-else-if="entrust.status=== 3">当前委托状态:<span style="color:#f4b400;">已完成</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 接受委托模态框 -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">接受委托确认信息</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                是否确认接受委托，我们将通知对方，以便于双方的协商。
+                                <p>请记住对方联系方式：<span v-text="user.phone"
+                                                   class="list-group-item list-group-item-info"></span></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="refresh()">我再想想</button>
+                                <button type="button" class="btn btn-primary" @click="acceptEntrustM(e_id)">确定接受
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <aside class="sidebar">
+                        <!--我的帮助-->
+                        <div class="sidebar-wdg">
+                            <h3 class="sidebar-title">我的帮帮</h3>
+                            <ul class="sidebar-list">
+                                <li><a href="findHelp.html">我发布的委托</a></li>
+                                <li><a href="acceptHelp.html">我接收的委托</a></li>
+                                <li><a href="userInfo.html">个人信息</a></li>
+                                <li><a href="alertInfo.html">修改个人信息</a></li>
+                                <li><a href="alertPassword.html">修改密码</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <span class="page-link" @click.pervert="search.page=1">首页</span>
+                        </li>
+                        <li :class="{prev:true, disabled:search.page===1}">
+                            <span class="page-link" @click.prevert="prePage()">上一页</span>
+                        </li>
+                        <li class="page-item" :class="{active:index(i)===search.page}"
+                            v-for="i in Math.min(5,totalPage)">
+                            <a class="page-link" href="#" v-text="index(i)" @click="search.page=i">
+                            </a>
+                        </li>
+                        <li class="dotted"><span v-show="search.page+2<totalPage&&totalPage > 5">...</span></li>
+                        <li :class="{prev:true, disabled:search.page===1}">
+                            <a class="page-link" href="#" @click.prevent="nextPage()">下一页</a>
+                        </li>
+                        <li class="page-item">
+                            <span class="page-link" @click="search.page=totalPage">尾页</span>
+                        </li>
+                    </ul>
+                    <div style="color:#00e5ff"><span>共{{totalPage}}页&nbsp;</span> <span>共{{total}}条数据&nbsp;</span></div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- 尾部 -->
+    <div class="section footer-top" id="nav-footer">
+        <cg-footer/>
+    </div>
+    <footer class="footer-bottom">
+        <p class="copyright">
+            &copy;2019 Oak.com版权所有 <i class="fa fa-heart-o"></i>客服QQ：1169506004
+        </p>
+    </footer>
+</div>
+<!-- End Footer -->
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue/vue.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/image-loaded.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/app.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+
+<script type="text/javascript">
+    var helper = new Vue({
+        el: "#helper",
+        data: {
+            entrusts: {},
+            totalPage: 0,
+            total: 0,
+            search: {
+                filter: "",  //搜索过滤条件
+                page: 1,
+                size: 4
+            },
+            user: {},
+            e_id: "" , //记录要接受的id
+            cg
+        },
+        created() {
+            //初始化页面
+            this.loadData();
+        },
+        watch: {
+            search: {
+                deep: true,
+                handler() {
+                    this.loadData();
+                }
+            },
+        },
+        methods: {
+            loadData() {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    cg.http.post("/entrust/list", this.search).then(resp => {
+                        this.entrusts = resp.data;
+                        this.totalPage = resp.data.totalPage;
+                        this.total = resp.data.total;
+                    }).catch(error => {
+                        alert("当前无委托信息");
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            searchEntrust() {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    cg.http.post("/entrust/list", this.search).then(resp => {
+                        this.entrusts = resp.data;
+                    }).catch(error => {
+                        alert("服务器繁忙");
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            index(i) {
+                if (this.search.page <= 3 || this.totalPage < 5) {
+                    return i;
+                }
+                else if (this.search.page >= this.totalPage - 2) {
+                    return i + this.totalPage - 5;
+                }
+                else {
+                    return i + this.search.page - 3;
+                }
+            },
+            //上一页
+            prePage() {
+                if (this.search.page > 1) {
+                    this.search.page--;
+                }
+
+            },
+            //下一页
+            nextPage() {
+                if (this.search.page < this.totalPage) {
+                    this.search.page++;
+                }
+            },
+            //委托详情页面
+            detail(id) {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    window.location = "/help-detail.html?id=" + id;
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            //接收委托页面
+            acceptEntrustM(id) {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    cg.http.put("/entrust/access/" + id + "").then(resp => {
+                        location.href = "acceptHelp.html";
+                    }).catch(error => {
+                        alert("服务器繁忙，请稍后重试");
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            //根据id获取该委托用户的信息
+            queryUser(user_id, e_id) {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    //根据用户id查询用户信息
+                    cg.http.get("/user/userDetail/" + user_id + "").then(user => {
+                        this.user = user.data;
+                    }).catch(error => {
+                        alert("服务器繁忙");
+                    });
+                    this.e_id = e_id;
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            refresh(){
+                window.location.reload();
+            },
+            registerFace(){
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    //确认用户已经登录的话
+                    window.location.href="faceRegister.html?id="+this.user.id;
+                }).catch(error=>{
+                    alert("未登录");
+                    window.location.href="login.html";
+                })
+            }
+
+        },
+        components: {
+            cgFooter: () => import('./js/pages/footer.js'),
+            cgTop: () => import('./js/pages/top.js')
+        }
+    });
+
+</script>
+</body>
+</html>

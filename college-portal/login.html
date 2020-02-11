@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/tooplate.css">
+</head>
+
+<body id="login">
+
+
+<div class="container" id="loginApp">
+    <div class="row tm-register-row tm-mb-35">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-login-l">
+            <span v-text="msg"></span>
+            <form action="" method="post" class="tm-bg-black p-5 h-100">
+                <div class="input-field">
+                    <input placeholder="用户民" name="username" type="text" v-model="form.username">
+                </div>
+                <div class="input-field mb-5">
+                    <input placeholder="密码" name="password" type="password" v-model="form.password">
+                </div>
+                <div class="tm-flex-lr">
+                    <a href="#" class="white-text small">忘记密码?</a>
+                    <a href="loginFace.html" class="white-text small">人脸识别登录</a>
+                    <a href="javascript:void(0)" @click="login"
+                       class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">登录</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-login-r">
+            <header class="font-weight-light tm-bg-black p-5 h-100">
+                <h3 class="mt-0 text-white font-weight-light">登录您的账户</h3>
+                <p>您必须有账号才可以登录，如果你没有账号请先去注册</p>
+                <p class="mb-0">登录须知：本网站不承诺、不接受、不参与任何感情、利益等纠纷。</p>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ml-auto mr-0 text-center">
+            <a href="register.html" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">创建新的用户</a>
+            <a href="index.html" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">返回首页</a>
+        </div>
+    </div>
+    <footer class="row tm-mt-big mb-3">
+        <div class="col-xl-12 text-center">
+            <p class="d-inline-block tm-bg-black white-text py-2 tm-px-5">
+                版权所有&copy; 2019 Oak.com
+                <i class="fa fa-heart-o"></i>客服QQ：1169506004
+
+        </div>
+    </footer>
+</div>
+
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/vue/vue.js"></script>
+<script type="text/javascript">
+    var loginVm = new Vue({
+        el: "#loginApp",
+        data: {
+            form: {
+                username: '',
+                password: ''
+            },
+            msg: ''
+        },
+        methods: {
+            login() {
+                cg.http.post("/auth/login", college.stringify(this.form))
+                    .then(resp => {
+                        if (resp.status === 204) {
+                            const url = college.getUrlParam("returnUrl");
+                            window.location = url || 'http://www.college.com';
+                        }
+                    })
+                    .catch(() => this.msg = '用户名或密码错误')
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

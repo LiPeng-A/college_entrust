@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>college-修改个人信息</title>
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div id="info">
+    <!-- Loading -->
+    <div id="loading" class="loading-layer">
+        <div class="adjust-block">
+            <div class="load ">
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <header class="header" id="nav-bottom">
+        <cg-Top/>
+    </header>
+
+    <!--顶部页面-->
+    <div class="section page-header">
+        <div class="head-overlayer"></div>
+        <div class="head-content">
+            <div class="adjust-block">
+                <h3 class="head-title animate fadeInUp">
+                    我的帮帮
+                </h3>
+                <div class="head-subtitle animate fadeInUp">
+                    纵使疾风起，人生不言弃。
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+            <li class="breadcrumb-item">修改个人信息</li>
+        </ol>
+    </nav>
+    <!-- Services -->
+    <!--主体-->
+    <div class="section page-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- 个人信息展示页面 -->
+                            <div>
+                                <div class="form-group">
+                                    <label for="id">编号</label>
+                                    <input type="text" class="form-control" :value="user.id" id="id" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">用户名</label>
+                                    <input type="text" class="form-control" v-model="user.username"
+                                           id="exampleInputEmail1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">手机号：</label>
+                                    <input type="text" class="form-control" :value="user.phone" id="phone" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="createTime">创建时间</label>
+                                    <input type="text" class="form-control" :value="cg.formatDate(user.created)"
+                                           id="createTime" readonly>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-dark" @click="alert">确认修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <aside class="sidebar">
+                        <!--我的帮助-->
+                        <div class="sidebar-wdg">
+                            <h3 class="sidebar-title">我的帮帮</h3>
+                            <ul class="sidebar-list">
+                                <li><a href="findHelp.html">我发布的委托</a></li>
+                                <li><a href="acceptHelp.html">我接收的委托</a></li>
+                                <li><a href="userInfo.html">个人信息</a></li>
+                                <li><a href="alertInfo.html">修改个人信息</a></li>
+                                <li><a href="alertPassword.html">修改密码</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 尾部 -->
+    <div class="section footer-top" id="nav-footer">
+        <cg-footer/>
+    </div>
+
+    <footer class="footer-bottom">
+        <p class="copyright">
+            &copy;2019 Oak.com版权所有 <i class="fa fa-heart-o"></i>客服QQ：1169506004
+        </p>
+    </footer>
+</div>
+<!-- End Footer -->
+<script src="js/jquery.js"></script>
+<script src="js/image-loaded.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/app.js"></script>
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/common.js"></script>
+
+<!--vue实例-->
+<script type="text/javascript">
+    var myVm = new Vue({
+        el: '#info',
+        data: {
+            user: {
+                id: "",
+                username: "",
+                phone: "",
+                created: ""
+            },
+            newUser:{
+                id:"",
+                username:"",
+
+            },
+            cg
+
+        },
+        created() {
+            this.loadData();
+        },
+        methods: {
+            loadData() {
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    //确认用户已经登录的话
+                    cg.http.get("/user/userDetail/" + this.user.id + "").then(resp => {
+                        this.user = resp.data;
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            alert() {
+                cg.http.get("/auth/verify").then(re => {
+
+                    this.newUser.username=this.user.username;
+                    this.newUser.id=this.user.id;
+                    cg.http.put("/user",this.newUser).then(resp => {
+                        window.location.href = "userInfo.html";
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            }
+        },
+        components: {
+            cgFooter: () => import('./js/pages/footer.js'),
+            cgTop:
+                () => import('./js/pages/top.js')
+        }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>通知信息详情 </title>
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/findHelper.css">
+
+</head>
+<body>
+<div id="detail">
+    <!-- Loading -->
+    <div id="loading" class="loading-layer">
+        <div class="adjust-block">
+            <div class="load ">
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <header class="header" id="nav-bottom">
+        <cg-Top/>
+    </header>
+
+    <!--头部页面-->
+    <div class="section page-header">
+        <div class="head-overlayer"></div>
+        <div class="head-content">
+            <div class="adjust-block">
+                <h3 class="head-title  animate fadeInUp">
+                    风的声音
+                </h3>
+                <div class="head-subtitle  animate fadeInUp">
+                    人之所以为人，是因为人与人之间有羁绊。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section page-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div style="width: 100%;">
+                            <span style=" text-align: left; font-size: 35px;font-family: 华文新魏;">系统通知:</span><br>
+                            <br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                style=" text-align: left; font-size: 26px;font-family: 华文新魏;"
+                                v-text="message.msg"></span>
+                            <br>
+                            <br><br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 25px;font-family: 华文新魏">委托编号：{{entrust.id}}</span>
+                            <div class="post-info" v-if="acc!==null || entrust!==null"
+                                 style="font-size: 25px;font-family: 华文新魏">
+                                <span v-if="entrust.status===0">
+                                        放弃不是错，一切都是最好的安排，你会遇见更好的!
+                                </span>
+                                <span v-else-if="acc.release_status===0 & acc.accept_status===1">
+                                    接受者:<span v-text="accept_user.username"></span>
+                                    <br>
+                                    <span>电话:</span><span v-text="accept_user.phone"></span>
+                                </span>
+                                <span v-else-if="acc.release_status===1 & acc.accept_status===1">
+                                    发布者:<span v-text="release_user.username"></span><br>
+                                    <span>电话:</span><span v-text="release_user.phone"></span>
+                                </span>
+                                <span v-else-if="acc.release_status===1 & acc.accept_status===2">
+                                         完成者:<span v-text="accept_user.username"></span>
+                                    <br>
+                                    <span>电话:</span><span v-text="accept_user.phone"></span>
+                                </span>
+                                <span v-else-if="acc.release_status===2 & acc.accept_status===2">
+                                     发布者:<span v-text="release_user.username"></span><br>
+                                    <span>电话:</span><span v-text="release_user.phone"></span>
+                                </span>
+                            </div>
+                            <div style="float: right">
+                                <span style="font-family: 华文新魏;font-size: 19px;"
+                                      v-text="cg.formatDate(message.time)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <aside class="sidebar">
+                        <!--我的帮助-->
+                        <div class="sidebar-wdg">
+                            <h3 class="sidebar-title">我的帮帮</h3>
+                            <ul class="sidebar-list">
+                                <li><a href="findHelp.html">我发布的委托</a></li>
+                                <li><a href="acceptHelp.html">我接收的委托</a></li>
+                                <li><a href="userInfo.html">个人信息</a></li>
+                                <li><a href="alertInfo.html">修改个人信息</a></li>
+                                <li><a href="alertPassword.html">修改密码</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 尾部 -->
+    <div class="section footer-top" id="nav-footer">
+        <cg-footer/>
+    </div>
+
+    <footer class="footer-bottom">
+        <p class="copyright">
+            &copy;2019 Oak.com版权所有 <i class="fa fa-heart-o"></i>客服QQ：1169506004
+        </p>
+    </footer>
+</div>
+<!-- End Footer -->
+<script src="./js/jquery.js"></script>
+<script src="js/image-loaded.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/app.js"></script>
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+    //创建vue实例
+    var vm = new Vue({
+        el: "#detail",
+        data: {
+            user: {},
+            message: {},
+            msg: "",
+            acc: {},
+            accept_user: {},
+            release_user: {},
+            entrust: {},
+            cg,
+        },
+        created() {
+            this.loadData();
+        },
+        methods: {
+
+            getUrlParam: function (name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return decodeURI(r[2]);
+                }
+                return null;
+            },
+            loadData() {
+                let info_id = this.getUrlParam("id");
+                cg.http.get("/auth/verify").then(re => {
+                            this.user = re.data;
+                    cg.http.get("/message/detail/" + info_id + "").then(resp => {
+                        this.message = resp.data;
+                        this.acc = this.message.entrust.acceptEntrust;
+                        this.entrust = this.message.entrust;
+                        //查询用户
+                        cg.http.get("/user/userDetail/" + this.acc.accept_uid + "").then(ac_user => {
+                            this.accept_user = ac_user.data;
+                        });
+                        cg.http.get("/user/userDetail/" + this.acc.release_uid + "").then(re_user => {
+                            this.release_user = re_user.data;
+                        });
+                    }).catch(error => {
+                        this.msg = "当前信息查询有误，请稍后重试";
+                    })
+                }).catch(error => {
+                    alert("未登录");
+                    window.location.href = "login.html";
+                })
+            },
+            confirmInfo(id) {
+
+                window.location.href = "findHelp-detail.html?id=" + id;
+            },
+            acceptInfo(id) {
+                window.location.href = "acceptHelp-detail.html?id=" + id;
+            },
+            abandon(){
+                window.location.href="findHelp.html";
+            },
+            registerFace(){
+                cg.http.get("/auth/verify").then(re => {
+                    this.user = re.data;
+                    //确认用户已经登录的话
+                    window.location.href="faceRegister.html?id="+this.user.id;
+                }).catch(error=>{
+                    alert("未登录");
+                    window.location.href="login.html";
+                })
+            }
+        },
+        components: {
+            cgFooter: () => import('./js/pages/footer.js'),
+            cgTop: () => import('./js/pages/top.js')
+        }
+
+    });
+
+
+</script>
+</body>
+</html>

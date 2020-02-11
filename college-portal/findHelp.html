@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>寻求帮助</title>
+    <!--[if lt IE 9]>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/findHelper.css">
+</head>
+<body>
+<div id="findHelper">
+    <!-- Loading -->
+    <div id="loading" class="loading-layer">
+        <div class="adjust-block">
+            <div class="load ">
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+                <span class="sharingan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <header class="header" id="nav-bottom">
+        <cg-Top/>
+    </header>
+    <!--头部页面-->
+    <div class="section page-header">
+        <div class="head-overlayer"></div>
+        <div class="head-content">
+            <div class="adjust-block">
+                <h3 class="head-title  animate fadeInUp">
+                    寻求帮助
+                </h3>
+                <div class="head-subtitle  animate fadeInUp">
+                    你的忙，我们来帮。
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+            <li class="breadcrumb-item">寻找帮助</li>
+        </ol>
+    </nav>
+    <!--新增帮助 模态框-->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-backdrop="static">添加新的帮助
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">添加新的帮助</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div>
+                            <div class="form-group">
+                                <label for="tfile1">请选择上传的图片</label>
+                                <input type="file" name="pic" class="form-control-file" @change="getFile($event)"
+                                       id="tfile1" ref="inputer">
+                            </div>
+                            <div class="form-group">
+                                <label for="tfile2">请选择上传的图片</label>
+                                <input type="file" class="form-control-file" @change="getFile1($event)"
+                                       id="tfile2" ref="inputer">
+                            </div>
+                            <div class="form-group">
+                                <label for="tfile3">请选择上传的图片</label>
+                                <input type="file" class="form-control-file" @change="getFile2($event)"
+                                       id="tfile3" ref="inputer">
+                            </div>
+                            <ul id="localImag">
+                                <li style="float: left"><img id="img1" src=""
+                                                             style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                                <li style="float:left"><img src="" id="img2"
+                                                            style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                                <li><img src="" id="img3"
+                                         style="width: 100px;height: 100px;margin: 10px 10px 10px 10px">
+                                </li>
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="title" class="col-form-label">主标题:</label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                   v-model.lazy="newEntrust.title">
+                        </div>
+                        <div class="form-group">
+                            <label for="subTitle" class="col-form-label">副标题:</label>
+                            <input type="text" class="form-control" id="subTitle" name="subTitle"
+                                   v-model.lazy="newEntrust.sub_title">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">详细内容:</label>
+                            <textarea class="form-control" id="message-text" name="detail"
+                                      v-model.lazy="newEntrust.detail"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消
+                    </button>
+                    <button type="button" class="btn btn-primary" @click="createEntrust($event)">保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section page-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-6" v-for="(entrust,i)  in entrusts" :key="i">
+                            <!--每张卡片代表一个寻求帮助的事件-->
+                            <div class="blog-post">
+                                <div class="post-img" v-if="entrust.image !==null">
+                                    <a href="javascript:void(0)" @click="detail(entrust.id)">
+                                        <img :src="entrust.image.split(',')[0].slice(17)" alt>
+                                    </a>
+                                </div>
+                                <div class="post-img" v-else style="width: 100%;height: 200px" he>
+                                    <a href="javascript:void(0)">
+                                        <img src="" alt="无上传图片">
+                                    </a>
+                                </div>
+                                <div class="post-info">
+                                    <h6 v-text="entrust.create_time">2019/11/1</h6>
+                                </div>
+                                <div class="post-info">
+                                    <h4 v-text="entrust.title.substring(0,12)+'....'"></h4>
+                                </div>
+                                <div class="post-info">
+                                    <h5 v-text="entrust.sub_title.substring(0,15)+'.....'">由于没时间取快递.......</h5>
+                                </div>
+                                <div class="post-info" v-if="entrust.acceptEntrust!==null">
+                                    <h5 v-if="entrust.acceptEntrust.release_status===0 & entrust.acceptEntrust.accept_status===1"
+                                        class="alert alert-primary" role="alert">
+                                        当前委托状态:<span style="color:#00E676;">已接受,你未确定</span>
+                                    </h5>
+                                    <h5 v-else-if="entrust.acceptEntrust.release_status===1 & entrust.acceptEntrust.accept_status===1"
+                                        class="alert alert-primary" role="alert">
+                                        当前委托状态:<span style="color:#00E676;">已接受,双方已确认</span>
+                                    </h5>
+                                    <h5 v-else-if="entrust.acceptEntrust.release_status===1 & entrust.acceptEntrust.accept_status===2"
+                                        class="alert alert-primary" role="alert">
+                                        当前委托状态:<span style="color:#f4b400;">已完成,你未确认</span>
+                                    </h5>
+                                    <h5 v-else-if="entrust.acceptEntrust.release_status===2 & entrust.acceptEntrust.accept_status===2 "
+                                        class="alert alert-primary" role="alert">
+                                        当前委托状态:<span style="color: #00E676">已完成,双方已确认</span>
+                                    </h5>
+                                </div>
+                                <div class="post-info" v-else>
+                                    <h5 class="alert alert-info" role="alert">当前委托状态:<span class="alert alert-danger"
+                                                                                           role="alert">未被接受</span></h5>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-primary" @click="detail(entrust.id)">详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <aside class="sidebar">
+                        <!--我的帮助-->
+                        <div class="sidebar-wdg">
+                            <h3 class="sidebar-title">我的帮帮</h3>
+                            <ul class="sidebar-list">
+                                <li><a href="findHelp.html">我发布的委托</a></li>
+                                <li><a href="acceptHelp.html">我接收的委托</a></li>
+                                <li><a href="userInfo.html">个人信息</a></li>
+                                <li><a href="alertInfo.html">修改个人信息</a></li>
+                                <li><a href="alertPassword.html">修改密码</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 尾部 -->
+    <div class="section footer-top" id="nav-footer">
+        <cg-footer/>
+    </div>
+    <footer class="footer-bottom">
+        <p class="copyright">
+            &copy;2019 Oak.com版权所有 <i class="fa fa-heart-o"></i>客服QQ：1169506004
+        </p>
+    </footer>
+</div>
+<!-- End Footer -->
+<!--页面顶部，由js动态加载-->
+<script src="./js/vue/vue.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/image-loaded.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/app.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/common.js"></script>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#findHelper",
+        data: {
+            user: {},
+            entrusts: [],
+            newEntrust: {
+                title: "",
+                sub_title: "",
+                detail: "",
+            },
+            file: '',
+            file2: '',
+            file3: '',
+            image: [],
+            e_id: ""
+        },
+        created() {
+            this.loadData();
+        },
+        methods: {
+            loadData() {
+                cg.http.get("/auth/verify").then(resp => {
+                    this.user = resp.data;
+                    cg.http.get("entrust/release").then(resp => {
+                        this.entrusts = resp.data;
+                        this.image = this.image || [];
+                    }).catch(error => {
+                    });
+
+                }).catch(error => {
+                    alert("你还未登录，请前往登录");
+                    window.location.href = "login.html";
+                })
+            },
+            getFile(event) {
+                this.isShow = false;
+                this.file = event.target.files[0];
+                if (this.file.name === this.file2.name || this.file.name === this.file3.name) {
+                    alert("该图片已经存在");
+                    return;
+                }
+                var file1 = document.getElementById("tfile1");
+                var img1 = document.getElementById("img1");
+                setImagePreview(this.file, file1, img1);
+                console.log(this.file);
+            },
+            getFile1(event) {
+                this.isShow = false;
+                this.file2 = event.target.files[0];
+                let file2 = document.getElementById("tfile2");
+                let img2 = document.getElementById("img2");
+                if (this.file2.name === this.file.name || this.file2.name === this.file3.name) {
+                    alert("该图片已经存在");
+                    return;
+                }
+                setImagePreview(this.file2, file2, img2);
+                console.log(this.file2);
+            },
+            getFile2(event) {
+                this.isShow = false;
+                this.file3 = event.target.files[0];
+                let file3 = document.getElementById("tfile3");
+                let img3 = document.getElementById("img3");
+                if (this.file3.name === this.file2.name || this.file3.name === this.file.name) {
+                    alert("该图片已经存在");
+                    return;
+                }
+                setImagePreview(this.file3, file3, img3);
+                console.log(this.file3);
+            },
+            //创建新的委托
+            createEntrust(event) {
+                cg.http.get("/auth/verify").then(r => {
+                    this.user = r.data;
+                    event.preventDefault();
+                    //获取文件内容
+                    let formData = new FormData();
+                    formData.append("file", this.file);
+                    formData.append("file1", this.file2);
+                    formData.append("file2", this.file3);
+                    formData.append("title", this.newEntrust.title);
+                    formData.append("sub_title", this.newEntrust.sub_title);
+                    formData.append("detail", this.newEntrust.detail);
+                    //创建新的委托
+                    cg.http.post("entrust/newEntrust", formData).then(resp => {
+                        if (resp.status === 201) {
+                            window.location.reload();
+                        }
+                    }).catch(error => {
+                        alert("创建新的委托失败");
+                    })
+                }).catch(error=>{
+                    alert("你还未登录，请前往登录");
+                    window.location.href = "login.html";
+                })
+            },
+            detail(id) {
+                window.location.href = "findHelp-detail.html?id=" + id;
+            }
+        },
+        components: {
+            cgFooter: () => import('./js/pages/footer.js'),
+            cgTop: () => import('./js/pages/top.js')
+        }
+
+    });
+
+    $(function () {
+        $("#exampleModal").modal({backdrop: 'static', keyboard: false, show: false});
+
+    });
+
+    //实现实时预览的函数
+    function setImagePreview(avalue, docObj, imgObjPreview) {
+        if (docObj.files && docObj.files[0]) {
+            //火狐下，直接设img属性
+            //imgObjPreview.src = docObj.files[0].getAsDataURL();
+            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+        } else {
+            //IE下，使用滤镜
+            docObj.select();
+            var imgSrc = document.selection.createRange().text;
+            var localImagId = document.getElementById("localImag");
+            //图片异常的捕捉，防止用户修改后缀来伪造图片
+            try {
+                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)"
+                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+            } catch (e) {
+                alert("您上传的图片格式不正确，请重新选择!");
+                return false;
+            }
+            imgObjPreview.style.display = 'none';
+            document.selection.empty();
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
